@@ -11,30 +11,35 @@ const styleBox: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
 };
-const colors = ["red", "blue", "green", "yellow", "purple"];
 
-const randomIndex = Math.round(Math.random() * 4);
-console.log(randomIndex, colors[randomIndex]);
+const getRandomColor = (): string => {
+  const colors = ["red", "blue", "green", "yellow", "purple"];
+  const randomIndex = Math.round(Math.random() * (colors.length - 1));
+  return colors[randomIndex];
+};
 
-const promptValue = prompt("podaj color w postaci HEX");
-let goodColor;
-let infoColor;
+let backgroundColor = prompt("podaj color w postaci HEX");
+let content = "";
+const kot = "lisa";
 
-if (promptValue === null || promptValue.length < 7) {
-  infoColor = "Błędny kolor";
-  goodColor = "#000";
+const colorRegExp = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+if (backgroundColor === null) backgroundColor = "#000";
+
+if (colorRegExp.test(backgroundColor)) {
+  console.log(`Kolor ${backgroundColor} jest poprawny.`);
 } else {
-  goodColor = promptValue;
-  infoColor = promptValue;
+  console.log(`Kolor ${backgroundColor} jest niepoprawny.`);
+  backgroundColor = "#000";
+  content = "Niepoprawny kolor";
 }
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div
       className="box1"
-      style={{ ...styleBox, backgroundColor: colors[randomIndex] }}
+      style={{ ...styleBox, backgroundColor: getRandomColor() }}
     />
-    <div className="box2" style={{ ...styleBox, backgroundColor: goodColor }}>
-      {infoColor && infoColor}
+    <div className="box2" style={{ ...styleBox, backgroundColor }}>
+      {content}
     </div>
   </React.StrictMode>
 );
