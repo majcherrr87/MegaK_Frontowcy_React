@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./style.scss";
-import { GrandParent } from "./Zadanie1/GrandParent";
+import { Container } from "./Kompozycja/Container";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <GrandParent value={234} />
+    <Container>
+      <h1>fsfdsfdsf</h1>
+      <h1>fsfdsfdsf</h1>
+      <h1>fsfdsfdsf</h1>
+    </Container>
   </React.StrictMode>
 );
