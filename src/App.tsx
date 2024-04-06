@@ -1,9 +1,4 @@
-import { Child } from "./Clean-Component/Child";
+import { ExerciseHome } from "./ExerciseHome/ExerciseHome";
+import { ExerciseHome2 } from "./ExerciseHome/ExerciseHome2";
 
-export const App = () => {
-  const handleClick = () => {
-    console.log("Click");
-  };
-
-  return <Child callback={handleClick} />;
-};
+export const App = () => <ExerciseHome2 />;
