@@ -1,4 +1,9 @@
-import { ExerciseHome } from "./ExerciseHome/ExerciseHome";
-import { ExerciseHome2 } from "./ExerciseHome/ExerciseHome2";
+import { Exercise1 } from "./Zadanie4/Exercise1";
 
-export const App = () => <ExerciseHome2 />;
+export const App = () => {
+  return (
+    <>
+      <Exercise1 />
+    </>
+  );
+};
