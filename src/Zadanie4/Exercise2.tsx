@@ -15,9 +15,9 @@ export const Exercise2 = () => {
   const addBox = () => {
     const x = Math.round(Math.random() * 1000);
     const y = Math.round(Math.random() * 1000);
-    const size = Math.round(Math.random() * 100);
+    const size = Math.round(Math.random() * 500);
     const rotation = Math.round(Math.random() * 360);
-    const borderRadius = Math.round(Math.random() * 100);
+    const borderRadius = Math.round(Math.random() * 50);
     const r = Math.round(Math.random() * 255);
     const g = Math.round(Math.random() * 255);
     const b = Math.round(Math.random() * 255);
@@ -30,6 +30,8 @@ export const Exercise2 = () => {
       borderRadius,
       color: `rgb(${r},${g},${b})`,
     };
+
+    setBoxes((prevBoxes) => [...prevBoxes, newBox]);
   };
 
   return (
