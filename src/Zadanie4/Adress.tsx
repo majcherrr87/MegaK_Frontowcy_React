@@ -28,12 +28,13 @@ export const Adress = () => {
       city: citys[randomIndexCity],
     }));
   };
+  const { country, city, street } = adress;
 
   return (
     <>
       <button onClick={changeCity}>Zmień miasto</button>
       <h1>
-        {adress.country}, {adress.city}, {adress.street}
+        {country}, {city}, {street}
       </h1>
     </>
   );
