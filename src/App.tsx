@@ -1,9 +1,9 @@
-import { Complicated } from "./Efects/Complicated";
+import { Exercise1 } from "./Pokemon/Exercise1";
 
 export const App = () => {
   return (
     <>
-      <Complicated />
+      <Exercise1 name="pikachu" />
     </>
   );
 };
