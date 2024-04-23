@@ -1,9 +1,10 @@
-import { Exercise1 } from "./Pokemon/Exercise1";
+import { PokkemonSelect } from "./Pokemon/HomeWork3/PokkemonSelect";
 
 export const App = () => {
   return (
     <>
-      <Exercise1 name="pikachu" />
+      {/* <PokemonInfo name="pikachu" /> */}
+      <PokkemonSelect />
     </>
   );
 };
