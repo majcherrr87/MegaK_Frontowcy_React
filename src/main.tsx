@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { IncorrectCounter } from "./Foo/IncorrectCounter";
-import { Foo2 } from "./Foo/Foo2";
+import { AgeVerifier } from "./WarunkoweRenderowanie/AgeVerifier";
 import "./style.scss";
-import { IncorectCounterParrent } from "./Foo/IncorectCounterParrent";
+import { HelloSomebody } from "./WarunkoweRenderowanie/HelloSomebody";
+import { SimpleAgeVerifier } from "./WarunkoweRenderowanie/SimpleAgeVerifier";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {/* <Foo2 /> */}
-    {/* <IncorrectCounter /> */}
-    <IncorectCounterParrent />
+    <AgeVerifier age={23} />
+    <HelloSomebody />
+    <SimpleAgeVerifier age={19} />
   </React.StrictMode>
 );
