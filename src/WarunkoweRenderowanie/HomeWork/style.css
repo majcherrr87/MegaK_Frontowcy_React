@@ -1,0 +1,16 @@
+.box {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.light {
+  background-color: lightgrey;
+  color: black;
+}
+.dark {
+  background-color: black;
+  color: white;
+}

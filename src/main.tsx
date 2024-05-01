@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AgeVerifier } from "./WarunkoweRenderowanie/AgeVerifier";
-import "./style.scss";
-import { HelloSomebody } from "./WarunkoweRenderowanie/HelloSomebody";
-import { SimpleAgeVerifier } from "./WarunkoweRenderowanie/SimpleAgeVerifier";
+
+import { HighestValue } from "./WarunkoweRenderowanie/HomeWork/HighestValue";
+import { Switcher } from "./WarunkoweRenderowanie/HomeWork/Switcher";
+import { ValeuVerifier } from "./WarunkoweRenderowanie/HomeWork/ValeuVerifier";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AgeVerifier age={23} />
-    <HelloSomebody />
-    <SimpleAgeVerifier age={19} />
+    <HighestValue a={1} b={2} c={3} />
+    <Switcher />
+    <ValeuVerifier />
   </React.StrictMode>
 );
