@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
 
-export const App = () => {
+let conter2 = 0;
+
+export const IncorrectCounter = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    console.log("useEffect");
+    conter2 = 0;
     const interval = setInterval(() => {
       setCounter((prev) => prev + 1);
     }, 1000);
+    const interval2 = setInterval(() => {
+      conter2++;
+    }, 2000);
     return () => {
-      console.log("clear");
       clearInterval(interval);
+      clearInterval(interval2);
     };
   }, []);
-  return <h1>{counter}</h1>;
+
+  return (
+    <div>
+      {counter} | {conter2}
+    </div>
+  );
 };
