@@ -1,7 +1,7 @@
 type Props = {
-  title: string;
-};
+	title: string
+}
 
 export const ButtonSuccess = ({ title }: Props) => (
-  <button style={{ backgroundColor: "green" }}>{title}</button>
-);
+	<button style={{ backgroundColor: 'green' }}>{title}</button>
+)

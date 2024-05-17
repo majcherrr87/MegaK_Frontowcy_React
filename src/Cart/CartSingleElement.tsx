@@ -1,17 +1,17 @@
-import { CartItem } from "./types";
+import { CartItem } from './types'
 
 type Props = {
-  element: CartItem;
-};
+	element: CartItem
+}
 
 export const CartSingleElemet = ({
-  element: { name, quantity, price },
+	element: { name, quantity, price },
 }: Props) => {
-  return (
-    <tr>
-      <td>{name}</td>
-      <td>{quantity}</td>
-      <td>{(price * quantity).toFixed(2)} zł</td>
-    </tr>
-  );
-};
+	return (
+		<tr>
+			<td>{name}</td>
+			<td>{quantity}</td>
+			<td>{(price * quantity).toFixed(2)} zł</td>
+		</tr>
+	)
+}

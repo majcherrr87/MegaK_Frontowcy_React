@@ -1,17 +1,17 @@
-@import "./variables";
+@import './variables';
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 ul {
-  margin-bottom: $main-gap;
-  li {
-    list-style-type: none;
-  }
+	margin-bottom: $main-gap;
+	li {
+		list-style-type: none;
+	}
 }
 h2 {
-  margin-bottom: $main-gap;
+	margin-bottom: $main-gap;
 }

@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { Light } from "./Light";
-import { Dark } from "./Dark";
+import { useState } from 'react'
+import { Light } from './Light'
+import { Dark } from './Dark'
 
 export const Switcher = () => {
-  const [switcher, setSwitcher] = useState(false);
+	const [switcher, setSwitcher] = useState(false)
 
-  return (
-    <>
-      <button onClick={() => setSwitcher((prev) => !prev)}>
-        {switcher ? "Turn Off" : "Turn On"}
-      </button>
-      {switcher ? <Light /> : <Dark />}
-    </>
-  );
-};
+	return (
+		<>
+			<button onClick={() => setSwitcher((prev) => !prev)}>
+				{switcher ? 'Turn Off' : 'Turn On'}
+			</button>
+			{switcher ? <Light /> : <Dark />}
+		</>
+	)
+}

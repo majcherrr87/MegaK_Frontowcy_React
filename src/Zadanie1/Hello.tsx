@@ -1,5 +1,5 @@
 type Props = {
-  who: string;
-};
+	who: string
+}
 
-export const Hello = ({ who }: Props) => <h1>Hello {who}</h1>;
+export const Hello = ({ who }: Props) => <h1>Hello {who}</h1>

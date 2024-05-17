@@ -1,5 +1,5 @@
 type Props = {
-  email: string;
-};
+	email: string
+}
 
-export const UserProfiler = ({ email }: Props) => <p>{email}</p>;
+export const UserProfiler = ({ email }: Props) => <p>{email}</p>

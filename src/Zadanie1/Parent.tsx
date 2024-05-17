@@ -1,7 +1,7 @@
-import { Child } from "./Child";
+import { Child } from './Child'
 
 type Props = {
-  value: number;
-};
+	value: number
+}
 
-export const Parent = ({ value }: Props) => <Child value={value} />;
+export const Parent = ({ value }: Props) => <Child value={value} />

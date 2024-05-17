@@ -1,14 +1,14 @@
-import { LoremImpum } from "./LoremIpsum";
+import { LoremImpum } from './LoremIpsum'
 
 export const HelloWorld = () => {
-  const isOk = false;
+	const isOk = false
 
-  if (!isOk) return null;
+	if (!isOk) return null
 
-  return (
-    <>
-      <h1>Hello World</h1>
-      <LoremImpum />
-    </>
-  );
-};
+	return (
+		<>
+			<h1>Hello World</h1>
+			<LoremImpum />
+		</>
+	)
+}

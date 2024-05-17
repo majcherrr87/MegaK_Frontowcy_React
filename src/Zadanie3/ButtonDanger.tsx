@@ -1,7 +1,7 @@
 type Props = {
-  title: string;
-};
+	title: string
+}
 
 export const ButtonDander = ({ title }: Props) => (
-  <button style={{ backgroundColor: "red" }}>{title}</button>
-);
+	<button style={{ backgroundColor: 'red' }}>{title}</button>
+)

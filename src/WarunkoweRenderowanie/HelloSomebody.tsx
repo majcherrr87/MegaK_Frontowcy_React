@@ -1,7 +1,7 @@
 type HelloSomebodyProps = {
-  name?: string;
-};
+	name?: string
+}
 
 export const HelloSomebody = ({ name }: HelloSomebodyProps) => {
-  return <h1>Hello {name || "Nieznajomy"}</h1>;
-};
+	return <h1>Hello {name || 'Nieznajomy'}</h1>
+}

@@ -1,7 +1,7 @@
 type Props = {
-  callback: () => void;
-};
+	callback: () => void
+}
 
 export const Child = ({ callback }: Props) => {
-  return <button onClick={callback}>Click</button>;
-};
+	return <button onClick={callback}>Click</button>
+}

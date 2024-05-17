@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { formatTime } from "./formatTime";
+import { useEffect, useState } from 'react';
+import { formatTime } from './formatTime';
 
 export const Stoper = () => {
   const [time, setTime] = useState(0);
@@ -12,6 +12,7 @@ export const Stoper = () => {
   }, []);
 
   const { second, miliSecond } = formatTime(time);
+  console.log(`Kot ${second}`);
 
   return (
     <div>

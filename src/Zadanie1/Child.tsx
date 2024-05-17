@@ -1,5 +1,5 @@
 type Props = {
-  value: number;
-};
+	value: number
+}
 
-export const Child = ({ value }: Props) => <h1>I got value {value}</h1>;
+export const Child = ({ value }: Props) => <h1>I got value {value}</h1>

@@ -1,12 +1,12 @@
-import { FirstConter } from "./FirstConter";
-import { SecondConter } from "./SecondConter";
+import { FirstConter } from './FirstConter'
+import { SecondConter } from './SecondConter'
 
 export const IncorectCounterParrent = () => {
-  return (
-    <h1>
-      <FirstConter />
-      |
-      <SecondConter />
-    </h1>
-  );
-};
+	return (
+		<h1>
+			<FirstConter />
+			|
+			<SecondConter />
+		</h1>
+	)
+}

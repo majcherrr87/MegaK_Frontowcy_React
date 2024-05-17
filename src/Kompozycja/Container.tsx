@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 type Props = {
-  children: ReactNode;
-};
+	children: ReactNode
+}
 
-export const Container = ({ children }: Props) => <div>{children}</div>;
+export const Container = ({ children }: Props) => <div>{children}</div>

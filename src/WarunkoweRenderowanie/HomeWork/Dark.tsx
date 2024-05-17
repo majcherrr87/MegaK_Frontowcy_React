@@ -1,5 +1,5 @@
-import "./style.css";
+import './style.css'
 
 export const Dark = () => {
-  return <div className="box dark">Dark</div>;
-};
+	return <div className="box dark">Dark</div>
+}

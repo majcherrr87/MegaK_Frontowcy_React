@@ -1,7 +1,7 @@
 type Props = {
-  sum: number;
-};
+	sum: number
+}
 
 export const Result = ({ sum }: Props) => {
-  return <h1>{sum}</h1>;
-};
+	return <h1>{sum}</h1>
+}

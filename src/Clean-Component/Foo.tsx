@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC } from 'react'
 
 type Props = {
-  readonly text: string;
-};
+	readonly text: string
+}
 export const Foo: FC<Props> = ({ text }) => {
-  text = "Kot lisa";
-  return <h1>{text}</h1>;
-};
+	text = 'Kot lisa'
+	return <h1>{text}</h1>
+}
