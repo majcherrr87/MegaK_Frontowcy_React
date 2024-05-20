@@ -6,7 +6,10 @@ type PositionType = {
 }
 
 export const HomeWork = () => {
-	const [position, setPosition] = useState<PositionType>({})
+	const [position, setPosition] = useState<PositionType>({
+		mouseX: 0,
+		mouseY: 0,
+	})
 
 	const handleMouseMove = (e: MouseEvent) => {
 		console.log('move', e)

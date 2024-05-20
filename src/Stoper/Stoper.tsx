@@ -3,7 +3,6 @@ import { formatTime } from './formatTime'
 
 export const Stoper = () => {
 	const [time, setTime] = useState(0)
-	const kot = 'lisa'
 
 	useEffect(() => {
 		const interval = setInterval(() => {

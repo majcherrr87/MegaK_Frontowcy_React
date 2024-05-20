@@ -25,7 +25,7 @@ export const Exercise1 = ({ name }: Props) => {
 
 	useEffect(() => {
 		getPokemon(name)
-	}, [])
+	}, [name])
 
 	return (
 		<div>
