@@ -1,7 +1,7 @@
 import { useRandomColor } from '../hooks/useRandomColor'
 
 export const RandomColor = () => {
-	const { color, colorType } = useRandomColor('dark')
+	const { color, type } = useRandomColor('light')
 
 	return (
 		<div
@@ -14,7 +14,7 @@ export const RandomColor = () => {
 				alignItems: 'center',
 			}}
 		>
-			{colorType}
+			{type}
 		</div>
 	)
 }

@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react'
 
-type ColorType = 'dark' | 'light'
-
-export const useRandomColor = (colorType: ColorType) => {
+export const useRandomColor = (type: 'light' | 'dark') => {
 	const [color, setColor] = useState('hsl(360, 100%, 85%)')
 
 	useEffect(() => {
-		setColor(
-			`hsl(${Math.round(Math.random() * 360)}, 100%, ${colorType === 'dark' ? '30%' : '70%'})`,
-		)
-	}, [colorType])
+		const hue = Math.round(Math.random() * 360)
+		const saturation = Math.round(Math.random() * 100)
+		const threshold = 25
 
-	return { color, colorType }
+		const lightness =
+			type === 'dark'
+				? Math.round(Math.random() * threshold)
+				: Math.round(Math.random() * (100 - threshold)) + threshold
+
+		setColor(`hsl(${hue}, ${saturation}%, ${lightness}%)`)
+	}, [type])
+
+	return { color, type }
 }

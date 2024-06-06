@@ -1,11 +1,9 @@
-import { Numbers } from './Customhooks/Numbers'
-import { RandomColor } from './Customhooks/RandomColor'
+import { Zadanie1 } from './FormCwiczenia/homeWork/Zadanie1'
 
 export const App = () => {
 	return (
 		<>
-			<Numbers />
-			<RandomColor />
+			<Zadanie1 />
 		</>
 	)
 }
