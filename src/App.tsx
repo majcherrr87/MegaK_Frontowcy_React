@@ -1,9 +1,9 @@
-import { Zadanie1 } from './FormCwiczenia/homeWork/Zadanie1'
+import { Homework2 } from './FormCwiczenia/homework2/Homework2'
 
 export const App = () => {
 	return (
 		<>
-			<Zadanie1 />
+			<Homework2 />
 		</>
 	)
 }
