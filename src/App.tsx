@@ -1,9 +1,9 @@
-import { Homework2 } from './FormCwiczenia/homework2/Homework2'
+import { OneTimeRef } from './Referencje/OneTimeRef'
 
 export const App = () => {
 	return (
 		<>
-			<Homework2 />
+			<OneTimeRef />
 		</>
 	)
 }
