@@ -6,10 +6,13 @@ type AppProps = {
 }
 
 export const App_NadmierneRenderowanie = ({ id }: AppProps) => {
-	const foo = useCallback((value: number) => {
-		const url = `https://api.test.com/${id}?value=${value}`
-		console.log(`Calling`, url)
-	}, [])
+	const foo = useCallback(
+		(value: number) => {
+			const url = `https://api.test.com/${id}?value=${value}`
+			console.log(`Calling`, url)
+		},
+		[id],
+	)
 
 	return (
 		<div>
