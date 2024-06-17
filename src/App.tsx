@@ -1,17 +1,22 @@
-import { useRef } from 'react'
-import { HomeWork2V2 } from './Referencje/HomeWork2V2'
+import { useState } from 'react'
+import { Child } from './NadmiernaRenderowanie/Child'
 
 export const App = () => {
-	const formRef = useRef<HTMLFormElement>(null)
-	const handleClick = () => {
-		formRef.current?.requestSubmit()
+	const [counter, setCounter] = useState(0)
+	const [arr, setArr] = useState([5])
+
+	const inc = () => {
+		setCounter((prev) => prev + 1)
+	}
+	const addToArr = () => {
+		setArr((prevValue) => [...prevValue, Math.round(Math.random() * 10)])
 	}
 
 	return (
-		<>
-			{/* <HomeWork2 ref={formRef} /> */}
-			<HomeWork2V2 formRef={formRef} />
-			<button onClick={handleClick}>Sent</button>
-		</>
+		<div>
+			<button onClick={inc}> +1 </button>
+			<button onClick={addToArr}>Add To Arr</button>
+			<Child value={arr} counter={counter} />
+		</div>
 	)
 }
