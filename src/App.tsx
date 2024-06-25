@@ -1,5 +1,5 @@
-import { App_NadmierneRenderowanie } from './NadmiernaRenderowanie/App_NadmierneRenderowanie'
+import { RandomArraySorter } from './NadmiernaRenderowanie/ZadanieDomowe/RandomArraySorter'
 
 export const App = () => {
-	return <App_NadmierneRenderowanie id={1000} />
+	return <RandomArraySorter direction="DESC" />
 }
