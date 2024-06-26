@@ -1,5 +1,5 @@
-import { RandomArraySorter } from './NadmiernaRenderowanie/ZadanieDomowe/RandomArraySorter'
+import { Form } from './NadmiernaRenderowanie/ZadanieDomowe/Form'
 
 export const App = () => {
-	return <RandomArraySorter direction="DESC" />
+	return <Form />
 }

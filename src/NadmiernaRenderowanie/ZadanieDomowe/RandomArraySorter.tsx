@@ -5,22 +5,22 @@ type RandomArraySorterProos = {
 }
 
 export const RandomArraySorter = ({ direction }: RandomArraySorterProos) => {
-	const [randomLength, setRandomLength] = useState(0)
+	const [randomLength, setRandomLength] = useState(10)
 
-	const generateArray = (howMany: number, sort: string): number[] => {
+	const getArray = (dir: 'DESC' | 'ASC', len: number): number[] => {
 		const array: number[] = []
 
-		for (let i = 0; i < howMany; i++) {
-			array.push(Math.round(Math.random() * 1000))
+		for (let i = 0; i < len; i++) {
+			array.push(Math.round(Math.random() * 100))
 		}
-		sort === 'ASC' ? array.sort() : array.sort().reverse()
+		array.sort((a, b) => (dir === 'ASC' ? a - b : b - a))
 
 		return array
 	}
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setRandomLength(Math.round(Math.random() * 15 + 5))
+			setRandomLength(Math.round(Math.random() * 15) + 5)
 		}, 1000)
 
 		return () => {
@@ -28,13 +28,20 @@ export const RandomArraySorter = ({ direction }: RandomArraySorterProos) => {
 		}
 	}, [])
 
-	const elements: number[] = generateArray(randomLength, direction)
+	const elements: number[] = useMemo(
+		() => getArray(direction, randomLength),
+		[direction],
+	)
 
 	return (
 		<div>
 			RandomArraySorter {randomLength}
 			<p>{direction}</p>
-			<p>{elements.join(', ')}</p>
+			<ul>
+				{elements.map((el, index) => (
+					<li key={index}>{el}</li>
+				))}
+			</ul>
 		</div>
 	)
 }
