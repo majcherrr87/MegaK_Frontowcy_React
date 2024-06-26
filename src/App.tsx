@@ -1,5 +1,5 @@
-import { List } from './Api/List'
+import { Todos } from './Api/exercise1/Todos'
 
 export const App = () => {
-	return <List />
+	return <Todos />
 }
