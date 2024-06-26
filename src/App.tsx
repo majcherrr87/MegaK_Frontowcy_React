@@ -1,5 +1,5 @@
-import { Form } from './NadmiernaRenderowanie/ZadanieDomowe/Form'
+import { List } from './Api/List'
 
 export const App = () => {
-	return <Form />
+	return <List />
 }
