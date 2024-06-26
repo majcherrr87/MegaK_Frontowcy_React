@@ -1,34 +1,34 @@
 {
-  "collection1": [
-    {
-      "id": "1",
-      "prop1": "value1",
-      "prop2": 100
-    },
-    {
-      "id": "2",
-      "prop1": "value2",
-      "prop2": 200
-    },
-    {
-      "id": "fb55",
-      "prop1": "Kot lisa",
-      "prop2": 2
-    },
-    {
-      "id": "53e7",
-      "prop1": "Kot lisa",
-      "prop2": 2
-    }
-  ],
-  "collection2": [
-    {
-      "id": "1",
-      "prop3": "Lorem ipsum"
-    },
-    {
-      "id": "2",
-      "prop4": "dolor sit ammet"
-    }
-  ]
+	"collection1": [
+		{
+			"id": "1",
+			"prop1": "value1",
+			"prop2": 100
+		},
+		{
+			"id": "2",
+			"prop1": "value2",
+			"prop2": 200
+		},
+		{
+			"id": "fb55",
+			"prop1": "Kot lisa",
+			"prop2": 2
+		},
+		{
+			"id": "53e7",
+			"prop1": "Kot lisa",
+			"prop2": 2
+		}
+	],
+	"collection2": [
+		{
+			"id": "1",
+			"prop3": "Lorem ipsum"
+		},
+		{
+			"id": "2",
+			"prop4": "dolor sit ammet"
+		}
+	]
 }
