@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTodoDelete } from './hooks/useTodoDelete'
 import { TodosType } from './types'
+import { SubTodos } from './SubTodos'
 
 type SingleTodoProps = {
 	element: TodosType
@@ -12,10 +13,16 @@ export const SingleTodo = ({
 	onTodoRemove,
 }: SingleTodoProps) => {
 	const { data, deleteTodos, errors, loading } = useTodoDelete()
+	const [showTodos, setShowTodos] = useState(false)
 
 	const onDelete = () => {
 		deleteTodos(id)
 	}
+
+	const toggleSubTodos = () => {
+		setShowTodos((prev) => !prev)
+	}
+
 	useEffect(() => {
 		if (!data) return
 		onTodoRemove(data.id)
@@ -23,13 +30,16 @@ export const SingleTodo = ({
 
 	return (
 		<li>
-			<p>
-				{title}
-				<button disabled={loading} onClick={onDelete}>
-					Delete
-				</button>
-				{errors && <p>{errors}</p>}
-			</p>
+			{title}
+			<button disabled={loading} onClick={onDelete}>
+				Delete
+			</button>
+			<button disabled={loading} onClick={toggleSubTodos}>
+				Show details
+			</button>
+			{showTodos && <SubTodos todoId={id} />}
+
+			{errors && <p>{errors}</p>}
 		</li>
 	)
 }

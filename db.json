@@ -1,3 +1,33 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "id": "5cc3",
+      "title": "nakarmić kota "
+    },
+    {
+      "id": "a944",
+      "title": "bawić się z kotem "
+    },
+    {
+      "id": "02fe",
+      "title": "wyczesać kota "
+    }
+  ],
+  "subtodos": [
+    {
+      "todoId": "5cc3",
+      "id": "aaaa",
+      "title": "karmą z tuńczykiem"
+    },
+    {
+      "todoId": "a944",
+      "id": "bbbb",
+      "title": "piłeczką do tenisa"
+    },
+    {
+      "todoId": "02fe",
+      "id": "cccc",
+      "title": "szczotką"
+    }
+  ]
 }
