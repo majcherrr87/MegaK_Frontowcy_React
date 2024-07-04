@@ -9,60 +9,12 @@
       "title": "bawić się z kotem "
     },
     {
-      "id": "02fe",
-      "title": "wyczesać kota "
-    },
-    {
-      "id": "b1d7",
-      "title": "ffff"
-    },
-    {
-      "id": "7d8f",
-      "title": "wwwwwww"
-    },
-    {
-      "id": "54cc",
-      "title": "dddd"
-    },
-    {
-      "id": "96f5",
-      "title": "dfdf"
-    },
-    {
-      "id": "d86b",
-      "title": "dfdfsdfsdf"
-    },
-    {
-      "id": "8e41",
-      "title": "dfdfsdfsdfadasd"
-    },
-    {
-      "id": "2cb3",
-      "title": "sfsdfdsf"
-    },
-    {
-      "id": "101c",
-      "title": "dddddd"
-    },
-    {
-      "id": "a63c",
-      "title": "fffff"
-    },
-    {
-      "id": "410a",
+      "id": "ba6b",
       "title": "test"
     },
     {
-      "id": "a862",
+      "id": "3a97",
       "title": "test 2"
-    },
-    {
-      "id": "b426",
-      "title": "test 3"
-    },
-    {
-      "id": "148f",
-      "title": "kot"
     }
   ],
   "subtodos": [
@@ -87,7 +39,7 @@
       "title": "piłeczką do tenisa"
     },
     {
-      "todoId": "02fe",
+      "todoId": null,
       "id": "cccc",
       "title": "szczotką"
     },
@@ -99,7 +51,17 @@
     {
       "id": "8a7b",
       "title": "asdsa",
-      "todoId": "02fe"
+      "todoId": null
+    },
+    {
+      "id": "51da",
+      "title": "fffff",
+      "todoId": "5cc3"
+    },
+    {
+      "id": "056f",
+      "title": "eeeee",
+      "todoId": "5cc3"
     }
   ]
 }

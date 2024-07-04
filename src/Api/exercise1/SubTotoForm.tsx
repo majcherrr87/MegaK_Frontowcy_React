@@ -1,30 +1,21 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { useSubTodoCreate } from './hooks/useSubTodoCreate'
+import { FormEvent, useState } from 'react'
+import { useCreateSubTodoMutation } from './Queries/useCreateSubTodoMutation'
 
 type SubTodoFormProps = {
 	todoId: string
-	onNewSubTodoCallback: () => void
 }
 
-export const SubTodoForm = ({
-	onNewSubTodoCallback,
-	todoId,
-}: SubTodoFormProps) => {
-	const { createSubTodo, errors, loading, data } = useSubTodoCreate()
+export const SubTodoForm = ({ todoId }: SubTodoFormProps) => {
+	const { mutate: createSubTodo, error, isPending } = useCreateSubTodoMutation()
 	const [value, setValue] = useState('')
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault()
-		createSubTodo(value, todoId)
+		createSubTodo({ title: value, todoId })
 		setValue('')
 	}
 
-	useEffect(() => {
-		if (!data) return
-		onNewSubTodoCallback()
-	}, [data])
-
-	if (loading) return <p>Loading ...</p>
+	if (isPending) return <p>Loading ...</p>
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -36,7 +27,7 @@ export const SubTodoForm = ({
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 			/>
-			{errors && <p>{errors}</p>}
+			{error && <p>{error.message}</p>}
 		</form>
 	)
 }

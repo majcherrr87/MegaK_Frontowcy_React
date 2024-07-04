@@ -1,18 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useTodoDelete } from './hooks/useTodoDelete'
+import { useState } from 'react'
 import { TodosType } from './types'
 import { SubTodos } from './SubTodos'
+import { useDeleteTodoMutation } from './Queries/useDeleteTodoMutation'
 
 type SingleTodoProps = {
 	element: TodosType
-	onTodoRemove: (id: string) => void
 }
 
-export const SingleTodo = ({
-	element: { id, title },
-	onTodoRemove,
-}: SingleTodoProps) => {
-	const { data, deleteTodos, errors, loading } = useTodoDelete()
+export const SingleTodo = ({ element: { id, title } }: SingleTodoProps) => {
+	const { mutate: deleteTodos, error, isPending } = useDeleteTodoMutation()
 	const [showTodos, setShowTodos] = useState(false)
 
 	const onDelete = () => {
@@ -23,23 +19,18 @@ export const SingleTodo = ({
 		setShowTodos((prev) => !prev)
 	}
 
-	useEffect(() => {
-		if (!data) return
-		onTodoRemove(data.id)
-	}, [data])
-
 	return (
 		<li>
 			{title}
-			<button disabled={loading} onClick={onDelete}>
+			<button disabled={isPending} onClick={onDelete}>
 				Delete
 			</button>
-			<button disabled={loading} onClick={toggleSubTodos}>
+			<button disabled={isPending} onClick={toggleSubTodos}>
 				Show details
 			</button>
 			{showTodos && <SubTodos todoId={id} />}
 
-			{errors && <p>{errors}</p>}
+			{error && <p>{error.message}</p>}
 		</li>
 	)
 }

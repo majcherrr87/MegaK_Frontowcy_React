@@ -1,18 +1,11 @@
-import { useState } from 'react'
-
 const API_BASE = 'http://localhost:3000/'
 
 export const useApiTodos = () => {
-	const [loading, setLoading] = useState(false)
-	const [errors, setErrors] = useState('')
-
 	const call = async <R, P = object>(
 		url: string,
 		method: 'GET' | 'DELETE' | 'POST',
 		body?: P,
 	) => {
-		setLoading(true)
-
 		const commonData = {
 			method,
 			headers: { 'Content-Type': 'application/json' },
@@ -28,12 +21,10 @@ export const useApiTodos = () => {
 				return data
 			} else {
 				const apiError = await respons.text()
-				setErrors(apiError)
+				throw new Error(apiError)
 			}
 		} catch (e) {
-			setErrors('Wystąpił bład')
-		} finally {
-			setLoading(false)
+			throw new Error('Wystąpił bład')
 		}
 	}
 	const apiGet = async <R>(url: string) => {
@@ -46,5 +37,5 @@ export const useApiTodos = () => {
 		return await call<R, P>(url, 'POST', data)
 	}
 
-	return { apiGet, apiDelete, apiPost, loading, errors }
+	return { apiGet, apiDelete, apiPost }
 }

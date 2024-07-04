@@ -1,13 +1,8 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { useTodoCreate } from './hooks/useTodoCreate'
-import { TodosType } from './types'
+import { FormEvent, useState } from 'react'
+import { useCreateTodoMutation } from './Queries/useCreateTodoMutation'
 
-type TodoFormProps = {
-	onNewTodo: (todo: TodosType) => void
-}
-
-export const TodoForm = ({ onNewTodo }: TodoFormProps) => {
-	const { createTodo, errors, loading, data } = useTodoCreate()
+export const TodoForm = () => {
+	const { mutate: createTodo, error, isPending } = useCreateTodoMutation()
 	const [value, setValue] = useState('')
 
 	const handleSubmit = (e: FormEvent) => {
@@ -16,12 +11,7 @@ export const TodoForm = ({ onNewTodo }: TodoFormProps) => {
 		setValue('')
 	}
 
-	useEffect(() => {
-		if (!data) return
-		onNewTodo(data)
-	}, [data])
-
-	if (loading) return <p>Loading ...</p>
+	if (isPending) return <p>Loading ...</p>
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -33,7 +23,7 @@ export const TodoForm = ({ onNewTodo }: TodoFormProps) => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 			/>
-			{errors && <p>{errors}</p>}
+			{error && <p>{error.message}</p>}
 		</form>
 	)
 }

@@ -1,25 +1,25 @@
+import { useGetTodosQuery } from './Queries/useGetTodosQuery'
 import { SingleTodo } from './SingleTodo'
 import { TodoForm } from './TodoForm'
-import { useTodos } from './hooks/useTodos'
+import { TopTodos } from './TopTodos'
 
 export const Todos = () => {
-	const { data, errors, loading, removeTodo, addTodo } = useTodos()
+	const { data, error, isLoading } = useGetTodosQuery()
 
-	if (loading) return <p>Loading ...</p>
-	if (errors) return <p>{errors}</p>
+	if (isLoading) return <p>Loading ...</p>
+	if (error) return <p>{error.message}</p>
 	return (
 		<div>
 			<h1>TODOS</h1>
+			<TopTodos />
+			<TopTodos />
+			<TopTodos />
 
-			<TodoForm onNewTodo={addTodo} />
+			<TodoForm />
 
 			<ul>
 				{data?.map((element) => (
-					<SingleTodo
-						key={element.id}
-						onTodoRemove={removeTodo}
-						element={element}
-					/>
+					<SingleTodo key={element.id} element={element} />
 				))}
 			</ul>
 		</div>
