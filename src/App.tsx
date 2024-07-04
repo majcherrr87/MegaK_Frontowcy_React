@@ -1,13 +1,13 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { MultipleTodos } from './Api/tanstackQuery/MultipleTodos'
+import { Todos } from './Api/tanstackQuery/Todos'
 
 const queryClient = new QueryClient()
 
 export const App = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
-			{/* <Todos /> */}
-			<MultipleTodos />
+			<Todos />
+			{/* <MultipleTodos /> */}
 		</QueryClientProvider>
 	)
 }

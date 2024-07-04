@@ -1,6 +1,5 @@
 import { SingleTodo } from './SingleTodo'
 import { TodoForm } from './TodoForm'
-import { TopTodos } from './TopTodos'
 import { useTodos } from './hooks/useTodos'
 
 export const Todos = () => {
@@ -11,10 +10,7 @@ export const Todos = () => {
 	return (
 		<div>
 			<h1>TODOS</h1>
-			<TopTodos />
-			<TopTodos />
-			<TopTodos />
-			<TopTodos />
+
 			<TodoForm onNewTodo={addTodo} />
 
 			<ul>

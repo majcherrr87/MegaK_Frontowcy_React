@@ -1,11 +1,11 @@
 import { FormEvent, useState } from 'react'
 import { useGetSubTodosQuery } from './hooks/useGetSubTodosQuery'
 import { useGetTodosQuery } from './hooks/useGetTodosQuery'
-import { useTodoCreate } from './hooks/useTodoCreate'
+import { useTodoCreateMutation } from './hooks/useTodoCreateMutation'
 
 export const Todos = () => {
 	const [value, setValue] = useState('')
-	const { createTodo } = useTodoCreate()
+	const { mutate: createTodo } = useTodoCreateMutation()
 	const { data, refetch } = useGetTodosQuery()
 	const firstTodoId = data ? data[data.length - 1].id : undefined
 	const { data: subtodos } = useGetSubTodosQuery(firstTodoId)
