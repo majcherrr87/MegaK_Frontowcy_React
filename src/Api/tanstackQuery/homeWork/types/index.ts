@@ -1,4 +1,4 @@
-export type Book = {
+export type BookEntity = {
 	id: string
 	year: number
 	title: string

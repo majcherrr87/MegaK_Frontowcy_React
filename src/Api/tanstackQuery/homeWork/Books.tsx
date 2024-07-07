@@ -1,18 +1,20 @@
+import { AddBook } from './AddBook'
 import { useGetBooksQuery } from './queries/useGetBooksQuery'
+import { SingleBook } from './SingleBook'
 
 export const Books = () => {
 	const { data } = useGetBooksQuery()
 
+	if (!data) return <p>Loading...</p>
 	return (
-		<>
-			<p>Books</p>
+		<div>
+			<h1>Books</h1>
+			<AddBook />
 			<ul>
-				{data?.map(({ id, title, description, year }) => (
-					<li key={id}>
-						{title} {description} {year}
-					</li>
+				{data.map((book) => (
+					<SingleBook book={book} key={book.id} />
 				))}
 			</ul>
-		</>
+		</div>
 	)
 }
