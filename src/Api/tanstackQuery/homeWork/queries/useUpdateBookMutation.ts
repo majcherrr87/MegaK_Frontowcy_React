@@ -2,12 +2,12 @@ import { useMutation } from '@tanstack/react-query'
 import { useApi } from '../hooks/useApi'
 import { BookDto, BookEntity } from '../types'
 
-export const useCreateBookMutation = () => {
-	const { apiPost } = useApi()
+export const useUpdateBookMutation = (bookId: string) => {
+	const { apiPut } = useApi()
 	const { mutate, isPending } = useMutation({
-		mutationKey: ['books', 'create'],
+		mutationKey: ['books', 'update', bookId],
 		mutationFn: async (payload: BookDto) => {
-			return apiPost<BookEntity, BookDto>('books', payload)
+			return apiPut<BookEntity, BookDto>(`books/${bookId}`, payload)
 		},
 		onSuccess: () => {},
 	})

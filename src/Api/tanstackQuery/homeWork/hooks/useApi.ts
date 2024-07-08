@@ -4,7 +4,7 @@ const API_URL = 'http://localhost:3000/'
 export const useApi = () => {
 	const call = async <R, P = object>(
 		url: string,
-		method: 'GET' | 'DELETE' | 'POST',
+		method: 'GET' | 'DELETE' | 'POST' | 'PUT',
 		payload?: P,
 	): Promise<R> => {
 		const fetchConfig = {
@@ -31,8 +31,12 @@ export const useApi = () => {
 	const apiGet = async <R>(url: string) => {
 		return await call<R>(url, 'GET')
 	}
-	const apipost = async <R, P>(url: string, payload: P) => {
+	const apiPost = async <R, P>(url: string, payload: P) => {
 		return await call<R, P>(url, 'POST', payload)
 	}
-	return { apiGet, apipost }
+	const apiPut = async <R, P>(url: string, payload: P) => {
+		return await call<R, P>(url, 'PUT', payload)
+	}
+
+	return { apiGet, apiPost, apiPut }
 }
