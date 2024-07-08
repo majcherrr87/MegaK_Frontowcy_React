@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { useCreateBookMutation } from './queries/useCreateBookMutation'
 
 export const AddBook = () => {
 	const [values, setValues] = useState({
@@ -6,6 +7,7 @@ export const AddBook = () => {
 		description: '',
 		year: 2024,
 	})
+	const { mutate, isPending } = useCreateBookMutation()
 
 	const handleChange = (
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -19,6 +21,13 @@ export const AddBook = () => {
 	}
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault()
+		const { title, description, year } = values
+
+		mutate({
+			title,
+			description,
+			year,
+		})
 
 		setValues({
 			title: '',
@@ -64,7 +73,9 @@ export const AddBook = () => {
 					onChange={handleChange}
 				/>
 			</div>
-			<button type="submit">Add book</button>
+			<button type="submit" disabled={isPending}>
+				Add book
+			</button>
 		</form>
 	)
 }
