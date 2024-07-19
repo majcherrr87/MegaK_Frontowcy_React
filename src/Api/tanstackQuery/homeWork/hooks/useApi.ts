@@ -37,6 +37,9 @@ export const useApi = () => {
 	const apiPut = async <R, P>(url: string, payload: P) => {
 		return await call<R, P>(url, 'PUT', payload)
 	}
+	const apiDelete = async <R>(url: string) => {
+		return await call<R>(url, 'DELETE')
+	}
 
-	return { apiGet, apiPost, apiPut }
+	return { apiGet, apiPost, apiPut, apiDelete }
 }
