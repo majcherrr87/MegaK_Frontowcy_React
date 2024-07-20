@@ -1,15 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { Wrapper } from './Stylowanie/Wrapper/Wrapper'
-import { Button } from './Stylowanie/Button/Button'
-import { Text } from './Stylowanie/Exercise/Text'
-import { useState } from 'react'
 import { Bouncy } from './Stylowanie/HomeWork/Bouncy'
-
-const GlobalStyle = createGlobalStyle`
-	body {
-		background-color: ${({ theme }) => theme.colors.background};
-	}
-`
 
 export const App = () => {
 	//HomeWork
