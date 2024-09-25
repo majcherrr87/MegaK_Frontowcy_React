@@ -1,7 +1,8 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigation } from 'react-router-dom'
 import { AppLink } from './AppLink'
 
 export const MainLayout = () => {
+	const { state } = useNavigation()
 	return (
 		<main>
 			<header>
@@ -19,10 +20,19 @@ export const MainLayout = () => {
 						<li>
 							<AppLink to="product/details">Details</AppLink>
 						</li>
+						<li>
+							<AppLink to="dashboard">Dashboard</AppLink>
+						</li>
+						<li>
+							<AppLink to="path-with-loader">path-with-loader</AppLink>
+						</li>
+						<li>
+							<AppLink to="ip-address">/ip-address/</AppLink>
+						</li>
 					</ul>
 				</nav>
 			</header>
-			<Outlet />
+			{state === 'loading' ? <p>Loading...</p> : <Outlet />}
 		</main>
 	)
 }
