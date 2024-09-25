@@ -1,11 +1,4 @@
-import {
-	BrowserRouter,
-	createBrowserRouter,
-	Navigate,
-	Route,
-	RouterProvider,
-	Routes,
-} from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Hello } from './Routing/Hello'
 import { Home } from './Routing/Home'
 import { AboutUs } from './Routing/AboutUs'
@@ -15,51 +8,51 @@ import { MainLayout } from './Routing/MainLayout'
 import { Product } from './Routing/Product'
 import { ProductDetails } from './Routing/ProductDetails'
 
-const router = createBrowserRouter([
-	{
-		element: <MainLayout />,
-		children: [
-			{
-				path: '/',
-				element: <Home />,
-			},
-			{
-				path: '/hello',
-				element: <Hello />,
-			},
-			{
-				path: '/about',
-				element: <About />,
-				children: [
-					{
-						index: true,
-						element: <AboutUs />,
-					},
-					{
-						path: 'company',
-						element: <AboutCompany />,
-					},
-					{
-						path: '*',
-						element: <Navigate to="." />,
-					},
-				],
-			},
-			{
-				path: '/product',
-				element: <Product />,
-			},
-			{
-				path: '/product/details',
-				element: <ProductDetails />,
-			},
-			{
-				path: '*',
-				element: <Navigate to="/hello" />,
-			},
-		],
-	},
-])
+// const router = createBrowserRouter([
+// 	{
+// 		element: <MainLayout />,
+// 		children: [
+// 			{
+// 				path: '/',
+// 				element: <Home />,
+// 			},
+// 			{
+// 				path: '/hello',
+// 				element: <Hello />,
+// 			},
+// 			{
+// 				path: '/about',
+// 				element: <About />,
+// 				children: [
+// 					{
+// 						index: true,
+// 						element: <AboutUs />,
+// 					},
+// 					{
+// 						path: 'company',
+// 						element: <AboutCompany />,
+// 					},
+// 					{
+// 						path: '*',
+// 						element: <Navigate to="." />,
+// 					},
+// 				],
+// 			},
+// 			{
+// 				path: '/product',
+// 				element: <Product />,
+// 			},
+// 			{
+// 				path: '/product/details',
+// 				element: <ProductDetails />,
+// 			},
+// 			{
+// 				path: '*',
+// 				element: <Navigate to="/hello" />,
+// 			},
+// 		],
+// 	},
+// ])
 
 export const App = () => {
 	return (
