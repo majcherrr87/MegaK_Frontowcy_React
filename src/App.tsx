@@ -7,6 +7,10 @@ import { About } from './Routing/About'
 import { MainLayout } from './Routing/MainLayout'
 import { Product } from './Routing/Product'
 import { ProductDetails } from './Routing/ProductDetails'
+import { DynamicProduct } from './Routing/DynamicProduct'
+import { FooBar } from './Routing/FooBar'
+import { Content } from './Routing/Content'
+import { Payment } from './Routing/Payment'
 
 // const router = createBrowserRouter([
 // 	{
@@ -70,8 +74,16 @@ export const App = () => {
 
 					<Route path="/product" element={<Product />} />
 					<Route path="/product/details" element={<ProductDetails />} />
-					<Route path="*" element={<Navigate to="/hello" />} />
+					<Route
+						path="/product/:productId/:addtionnalParam?"
+						element={<DynamicProduct />}
+					/>
+					<Route path="/foo/bar?" element={<FooBar />} />
+					<Route path="/:lang?/content" element={<Content />} />
+
+					<Route path="payment" element={<Payment />} />
 				</Route>
+				<Route path="*" element={<Navigate to="/hello" />} />
 			</Routes>
 		</BrowserRouter>
 	)
