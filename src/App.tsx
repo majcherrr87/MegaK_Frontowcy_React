@@ -1,50 +1,86 @@
-import { Bouncy } from './Stylowanie/HomeWork/Bouncy'
+import {
+	BrowserRouter,
+	createBrowserRouter,
+	Navigate,
+	Route,
+	RouterProvider,
+	Routes,
+} from 'react-router-dom'
+import { Hello } from './Routing/Hello'
+import { Home } from './Routing/Home'
+import { AboutUs } from './Routing/AboutUs'
+import { AboutCompany } from './Routing/AboutCompany'
+import { About } from './Routing/About'
+import { MainLayout } from './Routing/MainLayout'
+import { Product } from './Routing/Product'
+import { ProductDetails } from './Routing/ProductDetails'
+
+const router = createBrowserRouter([
+	{
+		element: <MainLayout />,
+		children: [
+			{
+				path: '/',
+				element: <Home />,
+			},
+			{
+				path: '/hello',
+				element: <Hello />,
+			},
+			{
+				path: '/about',
+				element: <About />,
+				children: [
+					{
+						index: true,
+						element: <AboutUs />,
+					},
+					{
+						path: 'company',
+						element: <AboutCompany />,
+					},
+					{
+						path: '*',
+						element: <Navigate to="." />,
+					},
+				],
+			},
+			{
+				path: '/product',
+				element: <Product />,
+			},
+			{
+				path: '/product/details',
+				element: <ProductDetails />,
+			},
+			{
+				path: '*',
+				element: <Navigate to="/hello" />,
+			},
+		],
+	},
+])
 
 export const App = () => {
-	//HomeWork
 	return (
-		<>
-			<Bouncy />
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route element={<MainLayout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="/hello" element={<Hello />} />
+
+					<Route path="/about" element={<About />}>
+						<Route index element={<AboutUs />} />
+						<Route path="company" element={<AboutCompany />} />
+						<Route path="*" element={<Navigate to="." />} />
+					</Route>
+
+					<Route path="/product" element={<Product />} />
+					<Route path="/product/details" element={<ProductDetails />} />
+					<Route path="*" element={<Navigate to="/hello" />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
 	)
-
-	//Exercise 1
-	// const [isLight, setIsLight] = useState(true)
-	// const light = {
-	// 	colors: {
-	// 		primary: '#333EE',
-	// 		background: '#fff',
-	// 		textPrimary: '#eee',
-	// 		textBackground: '#333',
-	// 	},
-	// }
-	// const dark = {
-	// 	colors: {
-	// 		primary: '#9ca5df',
-	// 		background: '#222',
-	// 		textPrimary: '#333',
-	// 		textBackground: '#eee',
-	// 	},
-	// }
-
-	// const toggleTheme = () => {
-	// 	setIsLight((prev) => !prev)
-	// }
-
-	// return (
-	// 	<ThemeProvider theme={isLight ? light : dark}>
-	// 		<GlobalStyle />
-
-	// 		<Button label="Lorem ipsum" onClick={toggleTheme} />
-	// 		<Text>dolor sit amet</Text>
-	// 	</ThemeProvider>
-	// )
-
-	//Exercise 2
-	// return (
-	// 	<>
-	// 		<Foo />
-	// 		<Bar />
-	// 	</>
-	// )
+	// return <RouterProvider router={router} />
 }
