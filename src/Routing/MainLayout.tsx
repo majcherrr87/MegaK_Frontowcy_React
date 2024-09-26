@@ -1,38 +1,21 @@
-import { Outlet, useNavigation } from 'react-router-dom'
-import { AppLink } from './AppLink'
+import { Link, Outlet } from 'react-router-dom'
 
 export const MainLayout = () => {
-	const { state } = useNavigation()
 	return (
 		<main>
-			<header>
-				<nav>
-					<ul>
-						<li>
-							<AppLink to=".">Home</AppLink>
-						</li>
-						<li>
-							<AppLink to="about">About</AppLink>
-						</li>
-						<li>
-							<AppLink to="product">Product</AppLink>
-						</li>
-						<li>
-							<AppLink to="product/details">Details</AppLink>
-						</li>
-						<li>
-							<AppLink to="dashboard">Dashboard</AppLink>
-						</li>
-						<li>
-							<AppLink to="path-with-loader">path-with-loader</AppLink>
-						</li>
-						<li>
-							<AppLink to="ip-address">/ip-address/</AppLink>
-						</li>
-					</ul>
-				</nav>
-			</header>
-			{state === 'loading' ? <p>Loading...</p> : <Outlet />}
+			<nav>
+				<ul>
+					<li>
+						<Link to="account">Account</Link>
+					</li>
+					<li>
+						<Link to="about">About</Link>
+					</li>
+				</ul>
+			</nav>
+			{/* <Suspense fallback="Loading..."> */}
+			<Outlet />
+			{/* </Suspense> */}
 		</main>
 	)
 }
