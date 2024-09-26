@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 // import { App } from './App'
+import { AppTodo } from './Routing/Todo/AppTodo'
 import './style.scss'
-import { AppRouter } from './Routing/AppRouter'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<AppRouter />
+		<AppTodo />
 	</React.StrictMode>,
 )
