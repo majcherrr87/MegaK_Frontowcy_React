@@ -15,6 +15,8 @@ import { Account } from './Account'
 
 import { aboutLoader } from './loaders/about'
 import { Create } from './Create'
+import { AwaitedData } from './AwaitedData'
+import { fakeLoader } from './loaders/fake'
 // import { About } from './About'
 
 // export const AppRouter = () => {
@@ -94,6 +96,8 @@ const router = createBrowserRouter(
 					})
 				}}
 			/>
+			<Route path="awaited" element={<AwaitedData />} loader={fakeLoader} />
+
 			<Route path="*" element={<Navigate to="account" />} />
 		</Route>,
 	),

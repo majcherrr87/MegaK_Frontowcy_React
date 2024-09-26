@@ -11,6 +11,9 @@ export const MainLayout = () => {
 					<li>
 						<Link to="about">About</Link>
 					</li>
+					<li>
+						<Link to="awaited">Awaited</Link>
+					</li>
 				</ul>
 			</nav>
 			{/* <Suspense fallback="Loading..."> */}
