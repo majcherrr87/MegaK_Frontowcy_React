@@ -14,6 +14,7 @@ import { MainLayout } from './MainLayout'
 import { Account } from './Account'
 
 import { aboutLoader } from './loaders/about'
+import { Create } from './Create'
 // import { About } from './About'
 
 // export const AppRouter = () => {
@@ -80,6 +81,18 @@ const router = createBrowserRouter(
 				path="about"
 				loader={aboutLoader}
 				lazy={() => import('./routes/About')}
+			/>
+			<Route
+				path="create"
+				element={<Create />}
+				action={async ({ request }) => {
+					const data = await request.formData()
+					return new Promise((resolve) => {
+						setInterval(() => {
+							resolve(data.get('title'))
+						}, 1000)
+					})
+				}}
 			/>
 			<Route path="*" element={<Navigate to="account" />} />
 		</Route>,
