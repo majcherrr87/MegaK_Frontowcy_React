@@ -15,13 +15,7 @@ const Root = () => {
 			<nav>
 				<ul>
 					<li>
-						<Link to="/ip">IP</Link>
-					</li>
-					<li>
 						<Link to="/lorem">Lorem</Link>
-					</li>
-					<li>
-						<Link to="/data">Data</Link>
 					</li>
 					<li>
 						<Link to="/dolor">Dolor</Link>

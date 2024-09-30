@@ -6,6 +6,7 @@ import './style.scss'
 
 const router = createRouter({
 	routeTree,
+	defaultNotFoundComponent: () => <p>Page not found !</p>,
 })
 
 declare module '@tanstack/react-router' {

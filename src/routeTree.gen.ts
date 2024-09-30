@@ -12,9 +12,14 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoremImport } from './routes/lorem'
-import { Route as DolorImport } from './routes/dolor'
+import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
+import { Route as IpIndexImport } from './routes/ip/index'
+import { Route as DataIndexImport } from './routes/data/index'
 import { Route as ValueValueImport } from './routes/value.$value'
+import { Route as DetailsSplatImport } from './routes/details.$'
+import { Route as WrapperDolorImport } from './routes/_wrapper/dolor'
+import { Route as WrapperDolorSplatImport } from './routes/_wrapper/dolor.$'
 import { Route as ColorRGBImport } from './routes/color.$r.$g.$b'
 
 // Create/Update Routes
@@ -24,8 +29,8 @@ const LoremRoute = LoremImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const DolorRoute = DolorImport.update({
-  path: '/dolor',
+const WrapperRoute = WrapperImport.update({
+  id: '/_wrapper',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -34,9 +39,34 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const IpIndexRoute = IpIndexImport.update({
+  path: '/ip/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DataIndexRoute = DataIndexImport.update({
+  path: '/data/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ValueValueRoute = ValueValueImport.update({
   path: '/value/$value',
   getParentRoute: () => rootRoute,
+} as any)
+
+const DetailsSplatRoute = DetailsSplatImport.update({
+  path: '/details/$',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WrapperDolorRoute = WrapperDolorImport.update({
+  path: '/dolor',
+  getParentRoute: () => WrapperRoute,
+} as any)
+
+const WrapperDolorSplatRoute = WrapperDolorSplatImport.update({
+  path: '/$',
+  getParentRoute: () => WrapperDolorRoute,
 } as any)
 
 const ColorRGBRoute = ColorRGBImport.update({
@@ -55,11 +85,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/dolor': {
-      id: '/dolor'
-      path: '/dolor'
-      fullPath: '/dolor'
-      preLoaderRoute: typeof DolorImport
+    '/_wrapper': {
+      id: '/_wrapper'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof WrapperImport
       parentRoute: typeof rootRoute
     }
     '/lorem': {
@@ -69,12 +99,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoremImport
       parentRoute: typeof rootRoute
     }
+    '/_wrapper/dolor': {
+      id: '/_wrapper/dolor'
+      path: '/dolor'
+      fullPath: '/dolor'
+      preLoaderRoute: typeof WrapperDolorImport
+      parentRoute: typeof WrapperImport
+    }
+    '/details/$': {
+      id: '/details/$'
+      path: '/details/$'
+      fullPath: '/details/$'
+      preLoaderRoute: typeof DetailsSplatImport
+      parentRoute: typeof rootRoute
+    }
     '/value/$value': {
       id: '/value/$value'
       path: '/value/$value'
       fullPath: '/value/$value'
       preLoaderRoute: typeof ValueValueImport
       parentRoute: typeof rootRoute
+    }
+    '/data/': {
+      id: '/data/'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/ip/': {
+      id: '/ip/'
+      path: '/ip'
+      fullPath: '/ip'
+      preLoaderRoute: typeof IpIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/_wrapper/dolor/$': {
+      id: '/_wrapper/dolor/$'
+      path: '/$'
+      fullPath: '/dolor/$'
+      preLoaderRoute: typeof WrapperDolorSplatImport
+      parentRoute: typeof WrapperDolorImport
     }
     '/color/$r/$g/$b': {
       id: '/color/$r/$g/$b'
@@ -88,59 +153,128 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface WrapperDolorRouteChildren {
+  WrapperDolorSplatRoute: typeof WrapperDolorSplatRoute
+}
+
+const WrapperDolorRouteChildren: WrapperDolorRouteChildren = {
+  WrapperDolorSplatRoute: WrapperDolorSplatRoute,
+}
+
+const WrapperDolorRouteWithChildren = WrapperDolorRoute._addFileChildren(
+  WrapperDolorRouteChildren,
+)
+
+interface WrapperRouteChildren {
+  WrapperDolorRoute: typeof WrapperDolorRouteWithChildren
+}
+
+const WrapperRouteChildren: WrapperRouteChildren = {
+  WrapperDolorRoute: WrapperDolorRouteWithChildren,
+}
+
+const WrapperRouteWithChildren =
+  WrapperRoute._addFileChildren(WrapperRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dolor': typeof DolorRoute
+  '': typeof WrapperRouteWithChildren
   '/lorem': typeof LoremRoute
+  '/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
   '/value/$value': typeof ValueValueRoute
+  '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
+  '/dolor/$': typeof WrapperDolorSplatRoute
   '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dolor': typeof DolorRoute
+  '': typeof WrapperRouteWithChildren
   '/lorem': typeof LoremRoute
+  '/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
   '/value/$value': typeof ValueValueRoute
+  '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
+  '/dolor/$': typeof WrapperDolorSplatRoute
   '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/dolor': typeof DolorRoute
+  '/_wrapper': typeof WrapperRouteWithChildren
   '/lorem': typeof LoremRoute
+  '/_wrapper/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
   '/value/$value': typeof ValueValueRoute
+  '/data/': typeof DataIndexRoute
+  '/ip/': typeof IpIndexRoute
+  '/_wrapper/dolor/$': typeof WrapperDolorSplatRoute
   '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dolor' | '/lorem' | '/value/$value' | '/color/$r/$g/$b'
+  fullPaths:
+    | '/'
+    | ''
+    | '/lorem'
+    | '/dolor'
+    | '/details/$'
+    | '/value/$value'
+    | '/data'
+    | '/ip'
+    | '/dolor/$'
+    | '/color/$r/$g/$b'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dolor' | '/lorem' | '/value/$value' | '/color/$r/$g/$b'
+  to:
+    | '/'
+    | ''
+    | '/lorem'
+    | '/dolor'
+    | '/details/$'
+    | '/value/$value'
+    | '/data'
+    | '/ip'
+    | '/dolor/$'
+    | '/color/$r/$g/$b'
   id:
     | '__root__'
     | '/'
-    | '/dolor'
+    | '/_wrapper'
     | '/lorem'
+    | '/_wrapper/dolor'
+    | '/details/$'
     | '/value/$value'
+    | '/data/'
+    | '/ip/'
+    | '/_wrapper/dolor/$'
     | '/color/$r/$g/$b'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DolorRoute: typeof DolorRoute
+  WrapperRoute: typeof WrapperRouteWithChildren
   LoremRoute: typeof LoremRoute
+  DetailsSplatRoute: typeof DetailsSplatRoute
   ValueValueRoute: typeof ValueValueRoute
+  DataIndexRoute: typeof DataIndexRoute
+  IpIndexRoute: typeof IpIndexRoute
   ColorRGBRoute: typeof ColorRGBRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DolorRoute: DolorRoute,
+  WrapperRoute: WrapperRouteWithChildren,
   LoremRoute: LoremRoute,
+  DetailsSplatRoute: DetailsSplatRoute,
   ValueValueRoute: ValueValueRoute,
+  DataIndexRoute: DataIndexRoute,
+  IpIndexRoute: IpIndexRoute,
   ColorRGBRoute: ColorRGBRoute,
 }
 
@@ -157,23 +291,49 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/dolor",
+        "/_wrapper",
         "/lorem",
+        "/details/$",
         "/value/$value",
+        "/data/",
+        "/ip/",
         "/color/$r/$g/$b"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/dolor": {
-      "filePath": "dolor.tsx"
+    "/_wrapper": {
+      "filePath": "_wrapper.tsx",
+      "children": [
+        "/_wrapper/dolor"
+      ]
     },
     "/lorem": {
       "filePath": "lorem.tsx"
     },
+    "/_wrapper/dolor": {
+      "filePath": "_wrapper/dolor.tsx",
+      "parent": "/_wrapper",
+      "children": [
+        "/_wrapper/dolor/$"
+      ]
+    },
+    "/details/$": {
+      "filePath": "details.$.tsx"
+    },
     "/value/$value": {
       "filePath": "value.$value.tsx"
+    },
+    "/data/": {
+      "filePath": "data/index.tsx"
+    },
+    "/ip/": {
+      "filePath": "ip/index.tsx"
+    },
+    "/_wrapper/dolor/$": {
+      "filePath": "_wrapper/dolor.$.tsx",
+      "parent": "/_wrapper/dolor"
     },
     "/color/$r/$g/$b": {
       "filePath": "color.$r.$g.$b.tsx"
