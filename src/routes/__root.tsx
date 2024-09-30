@@ -1,28 +1,20 @@
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router'
-import { Route as postsRoute } from './posts'
 
-const RootComponent = () => {
+const Root = () => {
 	return (
 		<div>
-			<h1>MyApp</h1>
 			<nav>
 				<ul>
 					<li>
-						<Link to={'..'}>Home</Link>
+						<Link to="/lorem">Lorem</Link>
 					</li>
 					<li>
-						<Link to={'/posts'}>Posts</Link>
+						<Link to="/dolor">Dolor</Link>
 					</li>
 					<li>
-						<Link to={'/posts/new'}>New</Link>
-					</li>
-					<li>
-						<Link to={'/posts/$postId'} params={{ postId: '1234F' }}>
-							Post 1234F
+						<Link to="/value/$value" params={{ value: '1234567890' }}>
+							Dolor
 						</Link>
-					</li>
-					<li>
-						<Link to={postsRoute.fullPath}>Posts</Link>
 					</li>
 				</ul>
 			</nav>
@@ -32,5 +24,5 @@ const RootComponent = () => {
 }
 
 export const Route = createRootRoute({
-	component: RootComponent,
+	component: Root,
 })

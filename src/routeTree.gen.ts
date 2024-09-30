@@ -11,16 +11,20 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PostsImport } from './routes/posts'
+import { Route as LoremImport } from './routes/lorem'
+import { Route as DolorImport } from './routes/dolor'
 import { Route as IndexImport } from './routes/index'
-import { Route as PostsIndexImport } from './routes/posts.index'
-import { Route as PostsNewImport } from './routes/posts.new'
-import { Route as PostsPostIdImport } from './routes/posts.$postId'
+import { Route as ValueValueImport } from './routes/value.$value'
 
 // Create/Update Routes
 
-const PostsRoute = PostsImport.update({
-  path: '/posts',
+const LoremRoute = LoremImport.update({
+  path: '/lorem',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DolorRoute = DolorImport.update({
+  path: '/dolor',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -29,19 +33,9 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PostsIndexRoute = PostsIndexImport.update({
-  path: '/',
-  getParentRoute: () => PostsRoute,
-} as any)
-
-const PostsNewRoute = PostsNewImport.update({
-  path: '/new',
-  getParentRoute: () => PostsRoute,
-} as any)
-
-const PostsPostIdRoute = PostsPostIdImport.update({
-  path: '/$postId',
-  getParentRoute: () => PostsRoute,
+const ValueValueRoute = ValueValueImport.update({
+  path: '/value/$value',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -55,94 +49,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/posts': {
-      id: '/posts'
-      path: '/posts'
-      fullPath: '/posts'
-      preLoaderRoute: typeof PostsImport
+    '/dolor': {
+      id: '/dolor'
+      path: '/dolor'
+      fullPath: '/dolor'
+      preLoaderRoute: typeof DolorImport
       parentRoute: typeof rootRoute
     }
-    '/posts/$postId': {
-      id: '/posts/$postId'
-      path: '/$postId'
-      fullPath: '/posts/$postId'
-      preLoaderRoute: typeof PostsPostIdImport
-      parentRoute: typeof PostsImport
+    '/lorem': {
+      id: '/lorem'
+      path: '/lorem'
+      fullPath: '/lorem'
+      preLoaderRoute: typeof LoremImport
+      parentRoute: typeof rootRoute
     }
-    '/posts/new': {
-      id: '/posts/new'
-      path: '/new'
-      fullPath: '/posts/new'
-      preLoaderRoute: typeof PostsNewImport
-      parentRoute: typeof PostsImport
-    }
-    '/posts/': {
-      id: '/posts/'
-      path: '/'
-      fullPath: '/posts/'
-      preLoaderRoute: typeof PostsIndexImport
-      parentRoute: typeof PostsImport
+    '/value/$value': {
+      id: '/value/$value'
+      path: '/value/$value'
+      fullPath: '/value/$value'
+      preLoaderRoute: typeof ValueValueImport
+      parentRoute: typeof rootRoute
     }
   }
 }
 
 // Create and export the route tree
 
-interface PostsRouteChildren {
-  PostsPostIdRoute: typeof PostsPostIdRoute
-  PostsNewRoute: typeof PostsNewRoute
-  PostsIndexRoute: typeof PostsIndexRoute
-}
-
-const PostsRouteChildren: PostsRouteChildren = {
-  PostsPostIdRoute: PostsPostIdRoute,
-  PostsNewRoute: PostsNewRoute,
-  PostsIndexRoute: PostsIndexRoute,
-}
-
-const PostsRouteWithChildren = PostsRoute._addFileChildren(PostsRouteChildren)
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/posts': typeof PostsRouteWithChildren
-  '/posts/$postId': typeof PostsPostIdRoute
-  '/posts/new': typeof PostsNewRoute
-  '/posts/': typeof PostsIndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/posts/$postId': typeof PostsPostIdRoute
-  '/posts/new': typeof PostsNewRoute
-  '/posts': typeof PostsIndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/posts': typeof PostsRouteWithChildren
-  '/posts/$postId': typeof PostsPostIdRoute
-  '/posts/new': typeof PostsNewRoute
-  '/posts/': typeof PostsIndexRoute
+  '/dolor': typeof DolorRoute
+  '/lorem': typeof LoremRoute
+  '/value/$value': typeof ValueValueRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/posts' | '/posts/$postId' | '/posts/new' | '/posts/'
+  fullPaths: '/' | '/dolor' | '/lorem' | '/value/$value'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/posts/$postId' | '/posts/new' | '/posts'
-  id: '__root__' | '/' | '/posts' | '/posts/$postId' | '/posts/new' | '/posts/'
+  to: '/' | '/dolor' | '/lorem' | '/value/$value'
+  id: '__root__' | '/' | '/dolor' | '/lorem' | '/value/$value'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PostsRoute: typeof PostsRouteWithChildren
+  DolorRoute: typeof DolorRoute
+  LoremRoute: typeof LoremRoute
+  ValueValueRoute: typeof ValueValueRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PostsRoute: PostsRouteWithChildren,
+  DolorRoute: DolorRoute,
+  LoremRoute: LoremRoute,
+  ValueValueRoute: ValueValueRoute,
 }
 
 export const routeTree = rootRoute
@@ -158,31 +133,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/posts"
+        "/dolor",
+        "/lorem",
+        "/value/$value"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/posts": {
-      "filePath": "posts.tsx",
-      "children": [
-        "/posts/$postId",
-        "/posts/new",
-        "/posts/"
-      ]
+    "/dolor": {
+      "filePath": "dolor.tsx"
     },
-    "/posts/$postId": {
-      "filePath": "posts.$postId.tsx",
-      "parent": "/posts"
+    "/lorem": {
+      "filePath": "lorem.tsx"
     },
-    "/posts/new": {
-      "filePath": "posts.new.tsx",
-      "parent": "/posts"
-    },
-    "/posts/": {
-      "filePath": "posts.index.tsx",
-      "parent": "/posts"
+    "/value/$value": {
+      "filePath": "value.$value.tsx"
     }
   }
 }
