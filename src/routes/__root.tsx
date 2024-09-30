@@ -16,6 +16,26 @@ const Root = () => {
 							Dolor
 						</Link>
 					</li>
+					<li>
+						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '23', g: '67' }}>
+							1
+						</Link>
+					</li>
+					<li>
+						<Link to="/color/$r/$g/$b" params={{ r: '55', b: '23', g: '67' }}>
+							2
+						</Link>
+					</li>
+					<li>
+						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '156', g: '67' }}>
+							3
+						</Link>
+					</li>
+					<li>
+						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '23', g: '123' }}>
+							4
+						</Link>
+					</li>
 				</ul>
 			</nav>
 			<Outlet />

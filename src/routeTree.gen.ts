@@ -15,6 +15,7 @@ import { Route as LoremImport } from './routes/lorem'
 import { Route as DolorImport } from './routes/dolor'
 import { Route as IndexImport } from './routes/index'
 import { Route as ValueValueImport } from './routes/value.$value'
+import { Route as ColorRGBImport } from './routes/color.$r.$g.$b'
 
 // Create/Update Routes
 
@@ -35,6 +36,11 @@ const IndexRoute = IndexImport.update({
 
 const ValueValueRoute = ValueValueImport.update({
   path: '/value/$value',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ColorRGBRoute = ColorRGBImport.update({
+  path: '/color/$r/$g/$b',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -70,6 +76,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ValueValueImport
       parentRoute: typeof rootRoute
     }
+    '/color/$r/$g/$b': {
+      id: '/color/$r/$g/$b'
+      path: '/color/$r/$g/$b'
+      fullPath: '/color/$r/$g/$b'
+      preLoaderRoute: typeof ColorRGBImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -80,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
   '/value/$value': typeof ValueValueRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesByTo {
@@ -87,6 +101,7 @@ export interface FileRoutesByTo {
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
   '/value/$value': typeof ValueValueRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesById {
@@ -95,14 +110,21 @@ export interface FileRoutesById {
   '/dolor': typeof DolorRoute
   '/lorem': typeof LoremRoute
   '/value/$value': typeof ValueValueRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dolor' | '/lorem' | '/value/$value'
+  fullPaths: '/' | '/dolor' | '/lorem' | '/value/$value' | '/color/$r/$g/$b'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dolor' | '/lorem' | '/value/$value'
-  id: '__root__' | '/' | '/dolor' | '/lorem' | '/value/$value'
+  to: '/' | '/dolor' | '/lorem' | '/value/$value' | '/color/$r/$g/$b'
+  id:
+    | '__root__'
+    | '/'
+    | '/dolor'
+    | '/lorem'
+    | '/value/$value'
+    | '/color/$r/$g/$b'
   fileRoutesById: FileRoutesById
 }
 
@@ -111,6 +133,7 @@ export interface RootRouteChildren {
   DolorRoute: typeof DolorRoute
   LoremRoute: typeof LoremRoute
   ValueValueRoute: typeof ValueValueRoute
+  ColorRGBRoute: typeof ColorRGBRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -118,6 +141,7 @@ const rootRouteChildren: RootRouteChildren = {
   DolorRoute: DolorRoute,
   LoremRoute: LoremRoute,
   ValueValueRoute: ValueValueRoute,
+  ColorRGBRoute: ColorRGBRoute,
 }
 
 export const routeTree = rootRoute
@@ -135,7 +159,8 @@ export const routeTree = rootRoute
         "/",
         "/dolor",
         "/lorem",
-        "/value/$value"
+        "/value/$value",
+        "/color/$r/$g/$b"
       ]
     },
     "/": {
@@ -149,6 +174,9 @@ export const routeTree = rootRoute
     },
     "/value/$value": {
       "filePath": "value.$value.tsx"
+    },
+    "/color/$r/$g/$b": {
+      "filePath": "color.$r.$g.$b.tsx"
     }
   }
 }
