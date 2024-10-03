@@ -1,18 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const IP = () => {
-	const { ip } = Route.useLoaderData()
-	return (
-		<div>
-			<h1>{ip}</h1>
-		</div>
-	)
-}
-
 export const Route = createFileRoute('/ip/')({
-	loader: async () => {
+	loader: async ({ context }) => {
+		console.log(context)
 		const response = await fetch('https://api.ipify.org?format=json')
 		return response.json() as Promise<{ ip: string }>
 	},
-	component: IP,
+	// beforeLoad: ({ context }) => {
+	// 	if (context.value >= 1000) {
+	// 		throw redirect({
+	// 			to = '/',
+	// 		})
+	// 	}
+	// },
 })

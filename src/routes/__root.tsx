@@ -1,4 +1,8 @@
-import { Link, Outlet, createRootRoute } from '@tanstack/react-router'
+import {
+	Link,
+	Outlet,
+	createRootRouteWithContext,
+} from '@tanstack/react-router'
 import React, { Suspense } from 'react'
 
 const TanStackRouterDevtools = import.meta.env.DEV
@@ -110,6 +114,6 @@ const Root = () => {
 	)
 }
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext()<{ value: number }>({
 	component: Root,
 })
