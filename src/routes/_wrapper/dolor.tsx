@@ -1,20 +1,20 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 
 const Dolor = () => {
-  const navigate = useNavigate()
+	const navigate = useNavigate()
 
-  const goToLorem = () => {
-    navigate({ to: '/lorem' })
-  }
+	const goToLorem = () => {
+		navigate({ to: '/lorem' })
+	}
 
-  return (
-    <div>
-      <p>Dolor</p>
-      <button onClick={goToLorem}>Go to Lorem</button>
-    </div>
-  )
+	return (
+		<div>
+			<p>Dolor</p>
+			<button onClick={goToLorem}>Go to Lorem</button>
+		</div>
+	)
 }
 
 export const Route = createFileRoute('/_wrapper/dolor')({
-  component: Dolor,
+	component: Dolor,
 })

@@ -51,6 +51,45 @@ const Root = () => {
 							4
 						</Link>
 					</li>
+					<li>
+						<Link
+							to="/pokemon/$pokemonName"
+							params={{ pokemonName: 'pikachu' }}
+							search={{
+								page: 2,
+								pageSize: 200,
+								filters: ['new', 'latest', 'kot'],
+							}}
+						>
+							Pikachu
+						</Link>
+					</li>
+					<li>
+						<Link
+							to="/pokemon/$pokemonName"
+							params={{ pokemonName: 'charizard' }}
+							search={{
+								page: 1,
+								pageSize: 100,
+								filters: ['new', 'latest'],
+							}}
+						>
+							Charizard
+						</Link>
+					</li>
+					<li>
+						<Link
+							to="/pokemon/defer/$pokemonName"
+							params={{ pokemonName: 'charizard' }}
+						>
+							Defer Charizard
+						</Link>
+					</li>
+					<li>
+						<Link to="/people" search={{ page: 1 }}>
+							People
+						</Link>
+					</li>
 				</ul>
 			</nav>
 			<Outlet />
