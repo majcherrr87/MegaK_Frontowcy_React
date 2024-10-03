@@ -86,8 +86,18 @@ const Root = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/people" search={{ page: 1 }}>
-							People
+						<Link to="/people" search={{ page: 1, size: 3 }}>
+							People 3
+						</Link>
+					</li>
+					<li>
+						<Link to="/people" search={{ page: 1, size: 5 }}>
+							People 5
+						</Link>
+					</li>
+					<li>
+						<Link to="/people" search={{ page: 1, size: 8 }}>
+							People 8
 						</Link>
 					</li>
 				</ul>

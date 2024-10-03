@@ -1,9 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const Index = () => {
-	return <p>select an option from the menu</p>
-}
-
 export const Route = createFileRoute('/')({
-	component: Index,
+	loader: async () => {
+		const response = await fetch('https://api.ipify.org?format=json')
+		return response.json() as Promise<{ ip: string }>
+	},
 })

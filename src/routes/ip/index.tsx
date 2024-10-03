@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ipLoader } from './-loaders'
 
-const MyIP = () => {
+const IP = () => {
 	const { ip } = Route.useLoaderData()
 	return (
 		<div>
@@ -10,24 +9,10 @@ const MyIP = () => {
 	)
 }
 
-const Loading = () => {
-	return (
-		<div>
-			<h1>Loading...</h1>
-		</div>
-	)
-}
-const Error = () => {
-	return (
-		<div>
-			<h1>Error!!!</h1>
-		</div>
-	)
-}
-
 export const Route = createFileRoute('/ip/')({
-	loader: ipLoader,
-	component: MyIP,
-	pendingComponent: Loading,
-	errorComponent: Error,
+	loader: async () => {
+		const response = await fetch('https://api.ipify.org?format=json')
+		return response.json() as Promise<{ ip: string }>
+	},
+	component: IP,
 })

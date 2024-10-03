@@ -29,342 +29,342 @@ import { Route as ColorRGBImport } from './routes/color.$r.$g.$b'
 // Create/Update Routes
 
 const LoremRoute = LoremImport.update({
-	path: '/lorem',
-	getParentRoute: () => rootRoute,
+  path: '/lorem',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const WrapperRoute = WrapperImport.update({
-	id: '/_wrapper',
-	getParentRoute: () => rootRoute,
+  id: '/_wrapper',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
-	path: '/',
-	getParentRoute: () => rootRoute,
+  path: '/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PokemonIndexRoute = PokemonIndexImport.update({
-	path: '/pokemon/',
-	getParentRoute: () => rootRoute,
+  path: '/pokemon/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PeopleIndexRoute = PeopleIndexImport.update({
-	path: '/people/',
-	getParentRoute: () => rootRoute,
+  path: '/people/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const IpIndexRoute = IpIndexImport.update({
-	path: '/ip/',
-	getParentRoute: () => rootRoute,
-} as any)
+  path: '/ip/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/ip/index.lazy').then((d) => d.Route))
 
 const DataIndexRoute = DataIndexImport.update({
-	path: '/data/',
-	getParentRoute: () => rootRoute,
+  path: '/data/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const ValueValueRoute = ValueValueImport.update({
-	path: '/value/$value',
-	getParentRoute: () => rootRoute,
+  path: '/value/$value',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PokemonPokemonNameRoute = PokemonPokemonNameImport.update({
-	path: '/pokemon/$pokemonName',
-	getParentRoute: () => rootRoute,
+  path: '/pokemon/$pokemonName',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const DetailsSplatRoute = DetailsSplatImport.update({
-	path: '/details/$',
-	getParentRoute: () => rootRoute,
+  path: '/details/$',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const WrapperDolorRoute = WrapperDolorImport.update({
-	path: '/dolor',
-	getParentRoute: () => WrapperRoute,
+  path: '/dolor',
+  getParentRoute: () => WrapperRoute,
 } as any)
 
 const PokemonDeferPokemonNameRoute = PokemonDeferPokemonNameImport.update({
-	path: '/pokemon/defer/$pokemonName',
-	getParentRoute: () => rootRoute,
+  path: '/pokemon/defer/$pokemonName',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const WrapperDolorSplatRoute = WrapperDolorSplatImport.update({
-	path: '/$',
-	getParentRoute: () => WrapperDolorRoute,
+  path: '/$',
+  getParentRoute: () => WrapperDolorRoute,
 } as any)
 
 const ColorRGBRoute = ColorRGBImport.update({
-	path: '/color/$r/$g/$b',
-	getParentRoute: () => rootRoute,
+  path: '/color/$r/$g/$b',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-	interface FileRoutesByPath {
-		'/': {
-			id: '/'
-			path: '/'
-			fullPath: '/'
-			preLoaderRoute: typeof IndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/_wrapper': {
-			id: '/_wrapper'
-			path: ''
-			fullPath: ''
-			preLoaderRoute: typeof WrapperImport
-			parentRoute: typeof rootRoute
-		}
-		'/lorem': {
-			id: '/lorem'
-			path: '/lorem'
-			fullPath: '/lorem'
-			preLoaderRoute: typeof LoremImport
-			parentRoute: typeof rootRoute
-		}
-		'/_wrapper/dolor': {
-			id: '/_wrapper/dolor'
-			path: '/dolor'
-			fullPath: '/dolor'
-			preLoaderRoute: typeof WrapperDolorImport
-			parentRoute: typeof WrapperImport
-		}
-		'/details/$': {
-			id: '/details/$'
-			path: '/details/$'
-			fullPath: '/details/$'
-			preLoaderRoute: typeof DetailsSplatImport
-			parentRoute: typeof rootRoute
-		}
-		'/pokemon/$pokemonName': {
-			id: '/pokemon/$pokemonName'
-			path: '/pokemon/$pokemonName'
-			fullPath: '/pokemon/$pokemonName'
-			preLoaderRoute: typeof PokemonPokemonNameImport
-			parentRoute: typeof rootRoute
-		}
-		'/value/$value': {
-			id: '/value/$value'
-			path: '/value/$value'
-			fullPath: '/value/$value'
-			preLoaderRoute: typeof ValueValueImport
-			parentRoute: typeof rootRoute
-		}
-		'/data/': {
-			id: '/data/'
-			path: '/data'
-			fullPath: '/data'
-			preLoaderRoute: typeof DataIndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/ip/': {
-			id: '/ip/'
-			path: '/ip'
-			fullPath: '/ip'
-			preLoaderRoute: typeof IpIndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/people/': {
-			id: '/people/'
-			path: '/people'
-			fullPath: '/people'
-			preLoaderRoute: typeof PeopleIndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/pokemon/': {
-			id: '/pokemon/'
-			path: '/pokemon'
-			fullPath: '/pokemon'
-			preLoaderRoute: typeof PokemonIndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/_wrapper/dolor/$': {
-			id: '/_wrapper/dolor/$'
-			path: '/$'
-			fullPath: '/dolor/$'
-			preLoaderRoute: typeof WrapperDolorSplatImport
-			parentRoute: typeof WrapperDolorImport
-		}
-		'/pokemon/defer/$pokemonName': {
-			id: '/pokemon/defer/$pokemonName'
-			path: '/pokemon/defer/$pokemonName'
-			fullPath: '/pokemon/defer/$pokemonName'
-			preLoaderRoute: typeof PokemonDeferPokemonNameImport
-			parentRoute: typeof rootRoute
-		}
-		'/color/$r/$g/$b': {
-			id: '/color/$r/$g/$b'
-			path: '/color/$r/$g/$b'
-			fullPath: '/color/$r/$g/$b'
-			preLoaderRoute: typeof ColorRGBImport
-			parentRoute: typeof rootRoute
-		}
-	}
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/_wrapper': {
+      id: '/_wrapper'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof WrapperImport
+      parentRoute: typeof rootRoute
+    }
+    '/lorem': {
+      id: '/lorem'
+      path: '/lorem'
+      fullPath: '/lorem'
+      preLoaderRoute: typeof LoremImport
+      parentRoute: typeof rootRoute
+    }
+    '/_wrapper/dolor': {
+      id: '/_wrapper/dolor'
+      path: '/dolor'
+      fullPath: '/dolor'
+      preLoaderRoute: typeof WrapperDolorImport
+      parentRoute: typeof WrapperImport
+    }
+    '/details/$': {
+      id: '/details/$'
+      path: '/details/$'
+      fullPath: '/details/$'
+      preLoaderRoute: typeof DetailsSplatImport
+      parentRoute: typeof rootRoute
+    }
+    '/pokemon/$pokemonName': {
+      id: '/pokemon/$pokemonName'
+      path: '/pokemon/$pokemonName'
+      fullPath: '/pokemon/$pokemonName'
+      preLoaderRoute: typeof PokemonPokemonNameImport
+      parentRoute: typeof rootRoute
+    }
+    '/value/$value': {
+      id: '/value/$value'
+      path: '/value/$value'
+      fullPath: '/value/$value'
+      preLoaderRoute: typeof ValueValueImport
+      parentRoute: typeof rootRoute
+    }
+    '/data/': {
+      id: '/data/'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/ip/': {
+      id: '/ip/'
+      path: '/ip'
+      fullPath: '/ip'
+      preLoaderRoute: typeof IpIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/people/': {
+      id: '/people/'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/pokemon/': {
+      id: '/pokemon/'
+      path: '/pokemon'
+      fullPath: '/pokemon'
+      preLoaderRoute: typeof PokemonIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/_wrapper/dolor/$': {
+      id: '/_wrapper/dolor/$'
+      path: '/$'
+      fullPath: '/dolor/$'
+      preLoaderRoute: typeof WrapperDolorSplatImport
+      parentRoute: typeof WrapperDolorImport
+    }
+    '/pokemon/defer/$pokemonName': {
+      id: '/pokemon/defer/$pokemonName'
+      path: '/pokemon/defer/$pokemonName'
+      fullPath: '/pokemon/defer/$pokemonName'
+      preLoaderRoute: typeof PokemonDeferPokemonNameImport
+      parentRoute: typeof rootRoute
+    }
+    '/color/$r/$g/$b': {
+      id: '/color/$r/$g/$b'
+      path: '/color/$r/$g/$b'
+      fullPath: '/color/$r/$g/$b'
+      preLoaderRoute: typeof ColorRGBImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
 interface WrapperDolorRouteChildren {
-	WrapperDolorSplatRoute: typeof WrapperDolorSplatRoute
+  WrapperDolorSplatRoute: typeof WrapperDolorSplatRoute
 }
 
 const WrapperDolorRouteChildren: WrapperDolorRouteChildren = {
-	WrapperDolorSplatRoute: WrapperDolorSplatRoute,
+  WrapperDolorSplatRoute: WrapperDolorSplatRoute,
 }
 
 const WrapperDolorRouteWithChildren = WrapperDolorRoute._addFileChildren(
-	WrapperDolorRouteChildren,
+  WrapperDolorRouteChildren,
 )
 
 interface WrapperRouteChildren {
-	WrapperDolorRoute: typeof WrapperDolorRouteWithChildren
+  WrapperDolorRoute: typeof WrapperDolorRouteWithChildren
 }
 
 const WrapperRouteChildren: WrapperRouteChildren = {
-	WrapperDolorRoute: WrapperDolorRouteWithChildren,
+  WrapperDolorRoute: WrapperDolorRouteWithChildren,
 }
 
 const WrapperRouteWithChildren =
-	WrapperRoute._addFileChildren(WrapperRouteChildren)
+  WrapperRoute._addFileChildren(WrapperRouteChildren)
 
 export interface FileRoutesByFullPath {
-	'/': typeof IndexRoute
-	'': typeof WrapperRouteWithChildren
-	'/lorem': typeof LoremRoute
-	'/dolor': typeof WrapperDolorRouteWithChildren
-	'/details/$': typeof DetailsSplatRoute
-	'/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
-	'/value/$value': typeof ValueValueRoute
-	'/data': typeof DataIndexRoute
-	'/ip': typeof IpIndexRoute
-	'/people': typeof PeopleIndexRoute
-	'/pokemon': typeof PokemonIndexRoute
-	'/dolor/$': typeof WrapperDolorSplatRoute
-	'/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
-	'/color/$r/$g/$b': typeof ColorRGBRoute
+  '/': typeof IndexRoute
+  '': typeof WrapperRouteWithChildren
+  '/lorem': typeof LoremRoute
+  '/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
+  '/value/$value': typeof ValueValueRoute
+  '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
+  '/people': typeof PeopleIndexRoute
+  '/pokemon': typeof PokemonIndexRoute
+  '/dolor/$': typeof WrapperDolorSplatRoute
+  '/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesByTo {
-	'/': typeof IndexRoute
-	'': typeof WrapperRouteWithChildren
-	'/lorem': typeof LoremRoute
-	'/dolor': typeof WrapperDolorRouteWithChildren
-	'/details/$': typeof DetailsSplatRoute
-	'/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
-	'/value/$value': typeof ValueValueRoute
-	'/data': typeof DataIndexRoute
-	'/ip': typeof IpIndexRoute
-	'/people': typeof PeopleIndexRoute
-	'/pokemon': typeof PokemonIndexRoute
-	'/dolor/$': typeof WrapperDolorSplatRoute
-	'/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
-	'/color/$r/$g/$b': typeof ColorRGBRoute
+  '/': typeof IndexRoute
+  '': typeof WrapperRouteWithChildren
+  '/lorem': typeof LoremRoute
+  '/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
+  '/value/$value': typeof ValueValueRoute
+  '/data': typeof DataIndexRoute
+  '/ip': typeof IpIndexRoute
+  '/people': typeof PeopleIndexRoute
+  '/pokemon': typeof PokemonIndexRoute
+  '/dolor/$': typeof WrapperDolorSplatRoute
+  '/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRoutesById {
-	__root__: typeof rootRoute
-	'/': typeof IndexRoute
-	'/_wrapper': typeof WrapperRouteWithChildren
-	'/lorem': typeof LoremRoute
-	'/_wrapper/dolor': typeof WrapperDolorRouteWithChildren
-	'/details/$': typeof DetailsSplatRoute
-	'/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
-	'/value/$value': typeof ValueValueRoute
-	'/data/': typeof DataIndexRoute
-	'/ip/': typeof IpIndexRoute
-	'/people/': typeof PeopleIndexRoute
-	'/pokemon/': typeof PokemonIndexRoute
-	'/_wrapper/dolor/$': typeof WrapperDolorSplatRoute
-	'/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
-	'/color/$r/$g/$b': typeof ColorRGBRoute
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/_wrapper': typeof WrapperRouteWithChildren
+  '/lorem': typeof LoremRoute
+  '/_wrapper/dolor': typeof WrapperDolorRouteWithChildren
+  '/details/$': typeof DetailsSplatRoute
+  '/pokemon/$pokemonName': typeof PokemonPokemonNameRoute
+  '/value/$value': typeof ValueValueRoute
+  '/data/': typeof DataIndexRoute
+  '/ip/': typeof IpIndexRoute
+  '/people/': typeof PeopleIndexRoute
+  '/pokemon/': typeof PokemonIndexRoute
+  '/_wrapper/dolor/$': typeof WrapperDolorSplatRoute
+  '/pokemon/defer/$pokemonName': typeof PokemonDeferPokemonNameRoute
+  '/color/$r/$g/$b': typeof ColorRGBRoute
 }
 
 export interface FileRouteTypes {
-	fileRoutesByFullPath: FileRoutesByFullPath
-	fullPaths:
-		| '/'
-		| ''
-		| '/lorem'
-		| '/dolor'
-		| '/details/$'
-		| '/pokemon/$pokemonName'
-		| '/value/$value'
-		| '/data'
-		| '/ip'
-		| '/people'
-		| '/pokemon'
-		| '/dolor/$'
-		| '/pokemon/defer/$pokemonName'
-		| '/color/$r/$g/$b'
-	fileRoutesByTo: FileRoutesByTo
-	to:
-		| '/'
-		| ''
-		| '/lorem'
-		| '/dolor'
-		| '/details/$'
-		| '/pokemon/$pokemonName'
-		| '/value/$value'
-		| '/data'
-		| '/ip'
-		| '/people'
-		| '/pokemon'
-		| '/dolor/$'
-		| '/pokemon/defer/$pokemonName'
-		| '/color/$r/$g/$b'
-	id:
-		| '__root__'
-		| '/'
-		| '/_wrapper'
-		| '/lorem'
-		| '/_wrapper/dolor'
-		| '/details/$'
-		| '/pokemon/$pokemonName'
-		| '/value/$value'
-		| '/data/'
-		| '/ip/'
-		| '/people/'
-		| '/pokemon/'
-		| '/_wrapper/dolor/$'
-		| '/pokemon/defer/$pokemonName'
-		| '/color/$r/$g/$b'
-	fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | ''
+    | '/lorem'
+    | '/dolor'
+    | '/details/$'
+    | '/pokemon/$pokemonName'
+    | '/value/$value'
+    | '/data'
+    | '/ip'
+    | '/people'
+    | '/pokemon'
+    | '/dolor/$'
+    | '/pokemon/defer/$pokemonName'
+    | '/color/$r/$g/$b'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | ''
+    | '/lorem'
+    | '/dolor'
+    | '/details/$'
+    | '/pokemon/$pokemonName'
+    | '/value/$value'
+    | '/data'
+    | '/ip'
+    | '/people'
+    | '/pokemon'
+    | '/dolor/$'
+    | '/pokemon/defer/$pokemonName'
+    | '/color/$r/$g/$b'
+  id:
+    | '__root__'
+    | '/'
+    | '/_wrapper'
+    | '/lorem'
+    | '/_wrapper/dolor'
+    | '/details/$'
+    | '/pokemon/$pokemonName'
+    | '/value/$value'
+    | '/data/'
+    | '/ip/'
+    | '/people/'
+    | '/pokemon/'
+    | '/_wrapper/dolor/$'
+    | '/pokemon/defer/$pokemonName'
+    | '/color/$r/$g/$b'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-	IndexRoute: typeof IndexRoute
-	WrapperRoute: typeof WrapperRouteWithChildren
-	LoremRoute: typeof LoremRoute
-	DetailsSplatRoute: typeof DetailsSplatRoute
-	PokemonPokemonNameRoute: typeof PokemonPokemonNameRoute
-	ValueValueRoute: typeof ValueValueRoute
-	DataIndexRoute: typeof DataIndexRoute
-	IpIndexRoute: typeof IpIndexRoute
-	PeopleIndexRoute: typeof PeopleIndexRoute
-	PokemonIndexRoute: typeof PokemonIndexRoute
-	PokemonDeferPokemonNameRoute: typeof PokemonDeferPokemonNameRoute
-	ColorRGBRoute: typeof ColorRGBRoute
+  IndexRoute: typeof IndexRoute
+  WrapperRoute: typeof WrapperRouteWithChildren
+  LoremRoute: typeof LoremRoute
+  DetailsSplatRoute: typeof DetailsSplatRoute
+  PokemonPokemonNameRoute: typeof PokemonPokemonNameRoute
+  ValueValueRoute: typeof ValueValueRoute
+  DataIndexRoute: typeof DataIndexRoute
+  IpIndexRoute: typeof IpIndexRoute
+  PeopleIndexRoute: typeof PeopleIndexRoute
+  PokemonIndexRoute: typeof PokemonIndexRoute
+  PokemonDeferPokemonNameRoute: typeof PokemonDeferPokemonNameRoute
+  ColorRGBRoute: typeof ColorRGBRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-	IndexRoute: IndexRoute,
-	WrapperRoute: WrapperRouteWithChildren,
-	LoremRoute: LoremRoute,
-	DetailsSplatRoute: DetailsSplatRoute,
-	PokemonPokemonNameRoute: PokemonPokemonNameRoute,
-	ValueValueRoute: ValueValueRoute,
-	DataIndexRoute: DataIndexRoute,
-	IpIndexRoute: IpIndexRoute,
-	PeopleIndexRoute: PeopleIndexRoute,
-	PokemonIndexRoute: PokemonIndexRoute,
-	PokemonDeferPokemonNameRoute: PokemonDeferPokemonNameRoute,
-	ColorRGBRoute: ColorRGBRoute,
+  IndexRoute: IndexRoute,
+  WrapperRoute: WrapperRouteWithChildren,
+  LoremRoute: LoremRoute,
+  DetailsSplatRoute: DetailsSplatRoute,
+  PokemonPokemonNameRoute: PokemonPokemonNameRoute,
+  ValueValueRoute: ValueValueRoute,
+  DataIndexRoute: DataIndexRoute,
+  IpIndexRoute: IpIndexRoute,
+  PeopleIndexRoute: PeopleIndexRoute,
+  PokemonIndexRoute: PokemonIndexRoute,
+  PokemonDeferPokemonNameRoute: PokemonDeferPokemonNameRoute,
+  ColorRGBRoute: ColorRGBRoute,
 }
 
 export const routeTree = rootRoute
-	._addFileChildren(rootRouteChildren)
-	._addFileTypes<FileRouteTypes>()
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
