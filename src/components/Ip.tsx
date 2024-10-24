@@ -1,9 +1,8 @@
-import { getRouteApi } from '@tanstack/react-router'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { ipQueryOptions } from '../queries/ipQuery'
 
-const ipRout = getRouteApi('/ip/')
-
-export const Ip = () => {
-	const { ip } = ipRout.useLoaderData()
-	// const { value } = ipRout.useRouteContext()
-	return <p>{ip} -</p>
+export const IP = () => {
+	const { data } = useSuspenseQuery(ipQueryOptions)
+	console.log(data.ip)
+	return <h1>{data.ip}</h1>
 }

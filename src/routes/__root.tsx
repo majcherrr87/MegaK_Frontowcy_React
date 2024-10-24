@@ -1,3 +1,4 @@
+import { QueryClient } from '@tanstack/react-query'
 import {
 	Link,
 	Outlet,
@@ -13,99 +14,22 @@ const TanStackRouterDevtools = import.meta.env.DEV
 		)
 	: () => null
 
-const Root = () => {
+const RootComponent = () => {
 	return (
 		<div>
-			<nav>
-				<ul>
-					<li>
-						<Link to="/ip">IP</Link>
-					</li>
-					<li>
-						<Link to="/lorem">Lorem</Link>
-					</li>
-					<li>
-						<Link to="/data">Data</Link>
-					</li>
-					<li>
-						<Link to="/dolor">Dolor</Link>
-					</li>
-					<li>
-						<Link to="/value/$value" params={{ value: '1234567890' }}>
-							Dolor
-						</Link>
-					</li>
-					<li>
-						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '23', g: '67' }}>
-							1
-						</Link>
-					</li>
-					<li>
-						<Link to="/color/$r/$g/$b" params={{ r: '55', b: '23', g: '67' }}>
-							2
-						</Link>
-					</li>
-					<li>
-						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '156', g: '67' }}>
-							3
-						</Link>
-					</li>
-					<li>
-						<Link to="/color/$r/$g/$b" params={{ r: '12', b: '23', g: '123' }}>
-							4
-						</Link>
-					</li>
-					<li>
-						<Link
-							to="/pokemon/$pokemonName"
-							params={{ pokemonName: 'pikachu' }}
-							search={{
-								page: 2,
-								pageSize: 200,
-								filters: ['new', 'latest', 'kot'],
-							}}
-						>
-							Pikachu
-						</Link>
-					</li>
-					<li>
-						<Link
-							to="/pokemon/$pokemonName"
-							params={{ pokemonName: 'charizard' }}
-							search={{
-								page: 1,
-								pageSize: 100,
-								filters: ['new', 'latest'],
-							}}
-						>
-							Charizard
-						</Link>
-					</li>
-					<li>
-						<Link
-							to="/pokemon/defer/$pokemonName"
-							params={{ pokemonName: 'charizard' }}
-						>
-							Defer Charizard
-						</Link>
-					</li>
-					<li>
-						<Link to="/people" search={{ page: 1, size: 3 }}>
-							People 3
-						</Link>
-					</li>
-					<li>
-						<Link to="/people" search={{ page: 1, size: 5 }}>
-							People 5
-						</Link>
-					</li>
-					<li>
-						<Link to="/people" search={{ page: 1, size: 8 }}>
-							People 8
-						</Link>
-					</li>
-				</ul>
-			</nav>
+			<h1>my App</h1>
+			<ul>
+				<li>
+					<Link to="/">Home</Link>
+				</li>
+				<li>
+					<Link to="/tasks">Tasks</Link>
+				</li>
+				<li>
+					<Link to="/tasks/new">New</Link>
+				</li>
+			</ul>
+
 			<Outlet />
 			<Suspense>
 				<TanStackRouterDevtools />
@@ -113,7 +37,12 @@ const Root = () => {
 		</div>
 	)
 }
+type RootContext = {
+	queryClient: QueryClient
+	isAuthorized: boolean
+	unauthRedirect: string
+}
 
-export const Route = createRootRouteWithContext()<{ value: number }>({
-	component: Root,
+export const Route = createRootRouteWithContext()<RootContext>({
+	component: RootComponent,
 })

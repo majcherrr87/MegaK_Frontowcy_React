@@ -17,3 +17,9 @@ export type PaginatedPeople = {
 		name: string
 	}[]
 }
+export type Task = {
+	id: string
+	title: string
+	description: string
+}
+export type taksDto = Omit<Task, 'id'>

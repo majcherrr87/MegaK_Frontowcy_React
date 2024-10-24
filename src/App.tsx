@@ -1,9 +1,17 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useUserData } from './hooks/useUserData'
+
+const queryClient = new QueryClient()
 
 const router = createRouter({
 	routeTree,
-	context: { value: undefined! },
+	context: {
+		queryClient,
+		isAuthorized: undefined!,
+		unauthRedirect: undefined!,
+	},
 })
 
 declare module '@tanstack/react-router' {
@@ -13,12 +21,13 @@ declare module '@tanstack/react-router' {
 }
 
 export const App = () => {
+	const { isAuthorized } = useUserData()
 	return (
-		<RouterProvider
-			router={router}
-			context={{
-				value: 10,
-			}}
-		/>
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider
+				router={router}
+				context={{ isAuthorized, unauthRedirect: '/unauth' }}
+			/>
+		</QueryClientProvider>
 	)
 }
