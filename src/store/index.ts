@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { ipApiSlice } from '../slices/ipSlice'
+import { todosApiSlice } from '../slices/todosApiSlice'
 
 export const store = configureStore({
 	reducer: {
-		[ipApiSlice.reducerPath]: ipApiSlice.reducer,
+		[todosApiSlice.reducerPath]: todosApiSlice.reducer,
 	},
-	middleware: (getDefaultMiddleware) => {
-		return getDefaultMiddleware().concat(ipApiSlice.middleware)
-	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(todosApiSlice.middleware),
 })
 export type AppDispatch = typeof store.dispatch

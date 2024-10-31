@@ -1,20 +1,13 @@
 import { Provider } from 'react-redux'
-import { MyIpAddress } from './components/MyIpAddress'
 import { store } from './store'
-import { Actions } from './components/Actions'
+import { TodoList } from './components/TodoList'
+import { TodoForm } from './components/TodoForm'
 
 export const App = () => {
 	return (
 		<Provider store={store}>
-			<Actions />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
-			<MyIpAddress />
+			<TodoForm />
+			<TodoList />
 		</Provider>
 	)
 }

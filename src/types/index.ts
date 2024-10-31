@@ -1,3 +1,4 @@
-export type IpAddress = {
-	ip: string
+export type Todo = {
+	id: string
+	title: string
 }
