@@ -1,30 +1,29 @@
-import { setName, setPrice } from '../slices/productSlice'
-import { addProduct } from '../slices/productsSlice'
-import { fetchIpAdress } from '../slices/ipSlice'
 import { useAppDispatch } from '../hooks/useAppDispatch'
+import { ipApiSlice, useGetIpAddressQuery } from '../slices/ipSlice'
 
 export const Actions = () => {
+	const { refetch } = useGetIpAddressQuery()
 	const dispatch = useAppDispatch()
 
-	const setProductName = () => {
-		dispatch(setName('product 12345'))
+	const handleFirstRefetch = () => {
+		refetch()
 	}
-	const setProductPrice = () => {
-		dispatch(setPrice(12345))
+	const handleSecondRefetch = () => {
+		dispatch(
+			ipApiSlice.endpoints.getIpAddress.initiate(undefined, {
+				forceRefetch: true,
+			}),
+		)
 	}
-	const addNewProduct = () => {
-		dispatch(addProduct(`Product ${Math.round(Math.random() * 1000)}`))
-	}
-	const getIpAddress = () => {
-		dispatch(fetchIpAdress())
+	const handleInvalidate = () => {
+		dispatch(ipApiSlice.util.invalidateTags(['IP']))
 	}
 
 	return (
 		<div>
-			<button onClick={setProductName}>Set product Name</button>
-			<button onClick={setProductPrice}>Set product Price</button>
-			<button onClick={addNewProduct}>Add new product</button>
-			<button onClick={getIpAddress}>Get Ip address</button>
+			<button onClick={handleFirstRefetch}>Refetch #1</button>
+			<button onClick={handleSecondRefetch}>Refetch #2</button>
+			<button onClick={handleInvalidate}>Refetch #3</button>
 		</div>
 	)
 }
