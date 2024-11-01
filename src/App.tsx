@@ -1,13 +1,13 @@
-import { Provider } from 'react-redux'
-import { store } from './store'
-import { TodoList } from './components/TodoList'
-import { TodoForm } from './components/TodoForm'
+import { Bar } from './component/Bar'
+import { Foo } from './component/Foo'
+import { Result } from './component/Result'
 
 export const App = () => {
 	return (
-		<Provider store={store}>
-			<TodoForm />
-			<TodoList />
-		</Provider>
+		<>
+			<Foo />
+			<Bar />
+			<Result />
+		</>
 	)
 }
