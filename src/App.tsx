@@ -1,17 +1,14 @@
-import { Bar } from './component/Bar'
-import { Foo } from './component/Foo'
-import { GlobalStore } from './component/GlobalStore'
-import { MyIp } from './component/MyIp'
-import { Result } from './component/Result'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
+
+const router = createRouter({ routeTree })
+
+declare module '@tanstack/react-router' {
+	interface Register {
+		router: typeof router
+	}
+}
 
 export const App = () => {
-	return (
-		<>
-			<Foo />
-			<Bar />
-			<Result />
-			<MyIp />
-			<GlobalStore />
-		</>
-	)
+	return <RouterProvider router={router} />
 }

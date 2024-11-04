@@ -11,200 +11,136 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as UnauthImport } from './routes/unauth'
-import { Route as TasksImport } from './routes/tasks'
+import { Route as SummaryImport } from './routes/summary'
+import { Route as SuccressImport } from './routes/succress'
+import { Route as ShippingImport } from './routes/shipping'
+import { Route as OrderImport } from './routes/order'
 import { Route as IndexImport } from './routes/index'
-import { Route as TasksIndexImport } from './routes/tasks/index'
-import { Route as TasksNewImport } from './routes/tasks/new'
-import { Route as TasksIdImport } from './routes/tasks/$id'
-import { Route as TasksEditIdImport } from './routes/tasks/edit.$id'
 
 // Create/Update Routes
 
-const UnauthRoute = UnauthImport.update({
-	path: '/unauth',
-	getParentRoute: () => rootRoute,
+const SummaryRoute = SummaryImport.update({
+  path: '/summary',
+  getParentRoute: () => rootRoute,
 } as any)
 
-const TasksRoute = TasksImport.update({
-	path: '/tasks',
-	getParentRoute: () => rootRoute,
+const SuccressRoute = SuccressImport.update({
+  path: '/succress',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ShippingRoute = ShippingImport.update({
+  path: '/shipping',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const OrderRoute = OrderImport.update({
+  path: '/order',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
-	path: '/',
-	getParentRoute: () => rootRoute,
-} as any)
-
-const TasksIndexRoute = TasksIndexImport.update({
-	path: '/',
-	getParentRoute: () => TasksRoute,
-} as any)
-
-const TasksNewRoute = TasksNewImport.update({
-	path: '/new',
-	getParentRoute: () => TasksRoute,
-} as any)
-
-const TasksIdRoute = TasksIdImport.update({
-	path: '/$id',
-	getParentRoute: () => TasksRoute,
-} as any)
-
-const TasksEditIdRoute = TasksEditIdImport.update({
-	path: '/edit/$id',
-	getParentRoute: () => TasksRoute,
+  path: '/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-	interface FileRoutesByPath {
-		'/': {
-			id: '/'
-			path: '/'
-			fullPath: '/'
-			preLoaderRoute: typeof IndexImport
-			parentRoute: typeof rootRoute
-		}
-		'/tasks': {
-			id: '/tasks'
-			path: '/tasks'
-			fullPath: '/tasks'
-			preLoaderRoute: typeof TasksImport
-			parentRoute: typeof rootRoute
-		}
-		'/unauth': {
-			id: '/unauth'
-			path: '/unauth'
-			fullPath: '/unauth'
-			preLoaderRoute: typeof UnauthImport
-			parentRoute: typeof rootRoute
-		}
-		'/tasks/$id': {
-			id: '/tasks/$id'
-			path: '/$id'
-			fullPath: '/tasks/$id'
-			preLoaderRoute: typeof TasksIdImport
-			parentRoute: typeof TasksImport
-		}
-		'/tasks/new': {
-			id: '/tasks/new'
-			path: '/new'
-			fullPath: '/tasks/new'
-			preLoaderRoute: typeof TasksNewImport
-			parentRoute: typeof TasksImport
-		}
-		'/tasks/': {
-			id: '/tasks/'
-			path: '/'
-			fullPath: '/tasks/'
-			preLoaderRoute: typeof TasksIndexImport
-			parentRoute: typeof TasksImport
-		}
-		'/tasks/edit/$id': {
-			id: '/tasks/edit/$id'
-			path: '/edit/$id'
-			fullPath: '/tasks/edit/$id'
-			preLoaderRoute: typeof TasksEditIdImport
-			parentRoute: typeof TasksImport
-		}
-	}
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderImport
+      parentRoute: typeof rootRoute
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingImport
+      parentRoute: typeof rootRoute
+    }
+    '/succress': {
+      id: '/succress'
+      path: '/succress'
+      fullPath: '/succress'
+      preLoaderRoute: typeof SuccressImport
+      parentRoute: typeof rootRoute
+    }
+    '/summary': {
+      id: '/summary'
+      path: '/summary'
+      fullPath: '/summary'
+      preLoaderRoute: typeof SummaryImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
-interface TasksRouteChildren {
-	TasksIdRoute: typeof TasksIdRoute
-	TasksNewRoute: typeof TasksNewRoute
-	TasksIndexRoute: typeof TasksIndexRoute
-	TasksEditIdRoute: typeof TasksEditIdRoute
-}
-
-const TasksRouteChildren: TasksRouteChildren = {
-	TasksIdRoute: TasksIdRoute,
-	TasksNewRoute: TasksNewRoute,
-	TasksIndexRoute: TasksIndexRoute,
-	TasksEditIdRoute: TasksEditIdRoute,
-}
-
-const TasksRouteWithChildren = TasksRoute._addFileChildren(TasksRouteChildren)
-
 export interface FileRoutesByFullPath {
-	'/': typeof IndexRoute
-	'/tasks': typeof TasksRouteWithChildren
-	'/unauth': typeof UnauthRoute
-	'/tasks/$id': typeof TasksIdRoute
-	'/tasks/new': typeof TasksNewRoute
-	'/tasks/': typeof TasksIndexRoute
-	'/tasks/edit/$id': typeof TasksEditIdRoute
+  '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/succress': typeof SuccressRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesByTo {
-	'/': typeof IndexRoute
-	'/unauth': typeof UnauthRoute
-	'/tasks/$id': typeof TasksIdRoute
-	'/tasks/new': typeof TasksNewRoute
-	'/tasks': typeof TasksIndexRoute
-	'/tasks/edit/$id': typeof TasksEditIdRoute
+  '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/succress': typeof SuccressRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesById {
-	__root__: typeof rootRoute
-	'/': typeof IndexRoute
-	'/tasks': typeof TasksRouteWithChildren
-	'/unauth': typeof UnauthRoute
-	'/tasks/$id': typeof TasksIdRoute
-	'/tasks/new': typeof TasksNewRoute
-	'/tasks/': typeof TasksIndexRoute
-	'/tasks/edit/$id': typeof TasksEditIdRoute
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/succress': typeof SuccressRoute
+  '/summary': typeof SummaryRoute
 }
 
 export interface FileRouteTypes {
-	fileRoutesByFullPath: FileRoutesByFullPath
-	fullPaths:
-		| '/'
-		| '/tasks'
-		| '/unauth'
-		| '/tasks/$id'
-		| '/tasks/new'
-		| '/tasks/'
-		| '/tasks/edit/$id'
-	fileRoutesByTo: FileRoutesByTo
-	to:
-		| '/'
-		| '/unauth'
-		| '/tasks/$id'
-		| '/tasks/new'
-		| '/tasks'
-		| '/tasks/edit/$id'
-	id:
-		| '__root__'
-		| '/'
-		| '/tasks'
-		| '/unauth'
-		| '/tasks/$id'
-		| '/tasks/new'
-		| '/tasks/'
-		| '/tasks/edit/$id'
-	fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/order' | '/shipping' | '/succress' | '/summary'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/order' | '/shipping' | '/succress' | '/summary'
+  id: '__root__' | '/' | '/order' | '/shipping' | '/succress' | '/summary'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-	IndexRoute: typeof IndexRoute
-	TasksRoute: typeof TasksRouteWithChildren
-	UnauthRoute: typeof UnauthRoute
+  IndexRoute: typeof IndexRoute
+  OrderRoute: typeof OrderRoute
+  ShippingRoute: typeof ShippingRoute
+  SuccressRoute: typeof SuccressRoute
+  SummaryRoute: typeof SummaryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-	IndexRoute: IndexRoute,
-	TasksRoute: TasksRouteWithChildren,
-	UnauthRoute: UnauthRoute,
+  IndexRoute: IndexRoute,
+  OrderRoute: OrderRoute,
+  ShippingRoute: ShippingRoute,
+  SuccressRoute: SuccressRoute,
+  SummaryRoute: SummaryRoute,
 }
 
 export const routeTree = rootRoute
-	._addFileChildren(rootRouteChildren)
-	._addFileTypes<FileRouteTypes>()
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
@@ -215,40 +151,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/tasks",
-        "/unauth"
+        "/order",
+        "/shipping",
+        "/succress",
+        "/summary"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/tasks": {
-      "filePath": "tasks.tsx",
-      "children": [
-        "/tasks/$id",
-        "/tasks/new",
-        "/tasks/",
-        "/tasks/edit/$id"
-      ]
+    "/order": {
+      "filePath": "order.tsx"
     },
-    "/unauth": {
-      "filePath": "unauth.tsx"
+    "/shipping": {
+      "filePath": "shipping.tsx"
     },
-    "/tasks/$id": {
-      "filePath": "tasks/$id.tsx",
-      "parent": "/tasks"
+    "/succress": {
+      "filePath": "succress.tsx"
     },
-    "/tasks/new": {
-      "filePath": "tasks/new.tsx",
-      "parent": "/tasks"
-    },
-    "/tasks/": {
-      "filePath": "tasks/index.tsx",
-      "parent": "/tasks"
-    },
-    "/tasks/edit/$id": {
-      "filePath": "tasks/edit.$id.tsx",
-      "parent": "/tasks"
+    "/summary": {
+      "filePath": "summary.tsx"
     }
   }
 }
