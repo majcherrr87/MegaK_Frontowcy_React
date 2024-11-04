@@ -20,127 +20,127 @@ import { Route as IndexImport } from './routes/index'
 // Create/Update Routes
 
 const SummaryRoute = SummaryImport.update({
-  path: '/summary',
-  getParentRoute: () => rootRoute,
+	path: '/summary',
+	getParentRoute: () => rootRoute,
 } as any)
 
 const SuccressRoute = SuccressImport.update({
-  path: '/succress',
-  getParentRoute: () => rootRoute,
+	path: '/succress',
+	getParentRoute: () => rootRoute,
 } as any)
 
 const ShippingRoute = ShippingImport.update({
-  path: '/shipping',
-  getParentRoute: () => rootRoute,
+	path: '/shipping',
+	getParentRoute: () => rootRoute,
 } as any)
 
 const OrderRoute = OrderImport.update({
-  path: '/order',
-  getParentRoute: () => rootRoute,
+	path: '/order',
+	getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
-  path: '/',
-  getParentRoute: () => rootRoute,
+	path: '/',
+	getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/order': {
-      id: '/order'
-      path: '/order'
-      fullPath: '/order'
-      preLoaderRoute: typeof OrderImport
-      parentRoute: typeof rootRoute
-    }
-    '/shipping': {
-      id: '/shipping'
-      path: '/shipping'
-      fullPath: '/shipping'
-      preLoaderRoute: typeof ShippingImport
-      parentRoute: typeof rootRoute
-    }
-    '/succress': {
-      id: '/succress'
-      path: '/succress'
-      fullPath: '/succress'
-      preLoaderRoute: typeof SuccressImport
-      parentRoute: typeof rootRoute
-    }
-    '/summary': {
-      id: '/summary'
-      path: '/summary'
-      fullPath: '/summary'
-      preLoaderRoute: typeof SummaryImport
-      parentRoute: typeof rootRoute
-    }
-  }
+	interface FileRoutesByPath {
+		'/': {
+			id: '/'
+			path: '/'
+			fullPath: '/'
+			preLoaderRoute: typeof IndexImport
+			parentRoute: typeof rootRoute
+		}
+		'/order': {
+			id: '/order'
+			path: '/order'
+			fullPath: '/order'
+			preLoaderRoute: typeof OrderImport
+			parentRoute: typeof rootRoute
+		}
+		'/shipping': {
+			id: '/shipping'
+			path: '/shipping'
+			fullPath: '/shipping'
+			preLoaderRoute: typeof ShippingImport
+			parentRoute: typeof rootRoute
+		}
+		'/succress': {
+			id: '/succress'
+			path: '/succress'
+			fullPath: '/succress'
+			preLoaderRoute: typeof SuccressImport
+			parentRoute: typeof rootRoute
+		}
+		'/summary': {
+			id: '/summary'
+			path: '/summary'
+			fullPath: '/summary'
+			preLoaderRoute: typeof SummaryImport
+			parentRoute: typeof rootRoute
+		}
+	}
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/order': typeof OrderRoute
-  '/shipping': typeof ShippingRoute
-  '/succress': typeof SuccressRoute
-  '/summary': typeof SummaryRoute
+	'/': typeof IndexRoute
+	'/order': typeof OrderRoute
+	'/shipping': typeof ShippingRoute
+	'/succress': typeof SuccressRoute
+	'/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/order': typeof OrderRoute
-  '/shipping': typeof ShippingRoute
-  '/succress': typeof SuccressRoute
-  '/summary': typeof SummaryRoute
+	'/': typeof IndexRoute
+	'/order': typeof OrderRoute
+	'/shipping': typeof ShippingRoute
+	'/succress': typeof SuccressRoute
+	'/summary': typeof SummaryRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/order': typeof OrderRoute
-  '/shipping': typeof ShippingRoute
-  '/succress': typeof SuccressRoute
-  '/summary': typeof SummaryRoute
+	__root__: typeof rootRoute
+	'/': typeof IndexRoute
+	'/order': typeof OrderRoute
+	'/shipping': typeof ShippingRoute
+	'/succress': typeof SuccressRoute
+	'/summary': typeof SummaryRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/order' | '/shipping' | '/succress' | '/summary'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/order' | '/shipping' | '/succress' | '/summary'
-  id: '__root__' | '/' | '/order' | '/shipping' | '/succress' | '/summary'
-  fileRoutesById: FileRoutesById
+	fileRoutesByFullPath: FileRoutesByFullPath
+	fullPaths: '/' | '/order' | '/shipping' | '/succress' | '/summary'
+	fileRoutesByTo: FileRoutesByTo
+	to: '/' | '/order' | '/shipping' | '/succress' | '/summary'
+	id: '__root__' | '/' | '/order' | '/shipping' | '/succress' | '/summary'
+	fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  OrderRoute: typeof OrderRoute
-  ShippingRoute: typeof ShippingRoute
-  SuccressRoute: typeof SuccressRoute
-  SummaryRoute: typeof SummaryRoute
+	IndexRoute: typeof IndexRoute
+	OrderRoute: typeof OrderRoute
+	ShippingRoute: typeof ShippingRoute
+	SuccressRoute: typeof SuccressRoute
+	SummaryRoute: typeof SummaryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  OrderRoute: OrderRoute,
-  ShippingRoute: ShippingRoute,
-  SuccressRoute: SuccressRoute,
-  SummaryRoute: SummaryRoute,
+	IndexRoute: IndexRoute,
+	OrderRoute: OrderRoute,
+	ShippingRoute: ShippingRoute,
+	SuccressRoute: SuccressRoute,
+	SummaryRoute: SummaryRoute,
 }
 
 export const routeTree = rootRoute
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+	._addFileChildren(rootRouteChildren)
+	._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 

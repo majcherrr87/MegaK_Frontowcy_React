@@ -3,6 +3,7 @@ import { PageHeader } from '../component/PageHeader'
 import { useInput } from '../hooks/useInput'
 import { useOrderStore } from '../store/useOrderStore'
 import { useShallow } from 'zustand/shallow'
+import { useNavigate } from '@tanstack/react-router'
 
 export const Order = () => {
 	const { order, setOrderData } = useOrderStore(
@@ -11,6 +12,7 @@ export const Order = () => {
 			setOrderData: state.setOrderData,
 		})),
 	)
+	const navigate = useNavigate()
 	const titleInput = useInput(order.title)
 	const desciptionInput = useInput(order.configuration)
 
@@ -21,6 +23,8 @@ export const Order = () => {
 			title: titleInput.value,
 			configuration: desciptionInput.value,
 		})
+
+		navigate({ to: '/shipping' })
 	}
 
 	return (
