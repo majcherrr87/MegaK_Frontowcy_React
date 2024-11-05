@@ -1,9 +1,10 @@
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { PageHeader } from '../component/PageHeader'
 import { useInput } from '../hooks/useInput'
 import { useOrderStore } from '../store/useOrderStore'
 import { useShallow } from 'zustand/shallow'
 import { useNavigate } from '@tanstack/react-router'
+import { Stepper } from '../component/Stepper'
 
 export const Order = () => {
 	const { order, setOrderData } = useOrderStore(
@@ -26,9 +27,16 @@ export const Order = () => {
 
 		navigate({ to: '/shipping' })
 	}
+	useEffect(() => {
+		setOrderData({
+			title: titleInput.value,
+			configuration: desciptionInput.value,
+		})
+	}, [titleInput.value, desciptionInput.value])
 
 	return (
 		<>
+			<Stepper step="order" />
 			<PageHeader>Order</PageHeader>
 			<p>Place fill your order configuration.</p>
 

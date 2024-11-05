@@ -2,8 +2,10 @@ import { Link } from '@tanstack/react-router'
 import { PageHeader } from '../component/PageHeader'
 import { useEffect } from 'react'
 import { useOrderStore } from '../store/useOrderStore'
+import { useOrderAccess } from '../hooks/useOrderAccess'
 
 export const Success = () => {
+	useOrderAccess('success')
 	const placeOrder = useOrderStore((state) => state.placeOrder)
 	useEffect(() => {
 		placeOrder()

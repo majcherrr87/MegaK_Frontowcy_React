@@ -1,11 +1,14 @@
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { PageHeader } from '../component/PageHeader'
 import { useInput } from '../hooks/useInput'
 import { useOrderStore } from '../store/useOrderStore'
 import { useShallow } from 'zustand/shallow'
 import { useNavigate } from '@tanstack/react-router'
+import { useOrderAccess } from '../hooks/useOrderAccess'
+import { Stepper } from '../component/Stepper'
 
 export const Shipping = () => {
+	useOrderAccess('shipping')
 	const { shipping, setShippingData } = useOrderStore(
 		useShallow((state) => ({
 			shipping: state.shipping,
@@ -29,9 +32,17 @@ export const Shipping = () => {
 		})
 		navigate({ to: '/summary' })
 	}
+	useEffect(() => {
+		setShippingData({
+			city: cityInput.value,
+			street: streetInput.value,
+			postCode: postCodeInput.value,
+		})
+	}, [cityInput.value, streetInput.value, postCodeInput.value])
 
 	return (
 		<>
+			<Stepper step="shipping" />
 			<PageHeader>Shipping</PageHeader>
 			<p>Place fill your shipping address</p>
 

@@ -4,8 +4,11 @@ import { useInput } from '../hooks/useInput'
 import { useOrderStore } from '../store/useOrderStore'
 import { useShallow } from 'zustand/shallow'
 import { useNavigate } from '@tanstack/react-router'
+import { useOrderAccess } from '../hooks/useOrderAccess'
+import { Stepper } from '../component/Stepper'
 
 export const Summary = () => {
+	useOrderAccess('summary')
 	const { summary, order, shipping, setSummaryData } = useOrderStore(
 		useShallow((state) => ({
 			order: state.order,
@@ -30,6 +33,7 @@ export const Summary = () => {
 
 	return (
 		<>
+			<Stepper step="summary" />
 			<PageHeader>Summary</PageHeader>
 			<p>Place review your order and add comments.</p>
 			<div>

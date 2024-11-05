@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router'
 import { PageHeader } from '../component/PageHeader'
+import { useOrderRedirect } from '../hooks/useOrderRedirect'
 
 export const Home = () => {
+	useOrderRedirect()
 	return (
 		<>
 			<PageHeader>Begin your process</PageHeader>
