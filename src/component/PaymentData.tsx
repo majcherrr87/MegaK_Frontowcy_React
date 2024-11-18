@@ -1,7 +1,9 @@
 import { useFormContext } from 'react-hook-form'
-import { Input } from './Input'
+import { Input } from '../ui/Input'
 import { OrderData } from '../schemas/order'
-import { RadioGroup } from './RadioGroup'
+import { RadioGroup } from '../ui/RadioGroup'
+import { SectionHeader } from '../ui/SectionHeader'
+import { Section } from '../ui/Section'
 
 export const PaymentData = () => {
 	const {
@@ -13,8 +15,8 @@ export const PaymentData = () => {
 
 	const type = watch('payment.type')
 	return (
-		<div>
-			<h2>Payment data</h2>
+		<Section>
+			<SectionHeader>Payment data</SectionHeader>
 
 			<RadioGroup
 				name="payment.type"
@@ -52,6 +54,6 @@ export const PaymentData = () => {
 					error={errors.payment?.details?.iban}
 				/>
 			) : null}
-		</div>
+		</Section>
 	)
 }

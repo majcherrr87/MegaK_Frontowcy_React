@@ -3,6 +3,10 @@ import { OrderData, orderSchema } from './schemas/order'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { BasicData } from './component/BasicData'
 import { PaymentData } from './component/PaymentData'
+import { Button } from './ui/Button'
+import { PageHeader } from './ui/PageHeader'
+import { Container } from './ui/Container'
+import { Wrapper } from './ui/Wrapper'
 
 export const App = () => {
 	const methods = useForm<OrderData>({
@@ -21,15 +25,17 @@ export const App = () => {
 	}
 
 	return (
-		<>
-			<h1>Place your order</h1>
+		<Container>
+			<PageHeader>Place your order</PageHeader>
 			<FormProvider {...methods}>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<BasicData />
-					<PaymentData />
-					<button type="submit">Place order</button>
+					<Wrapper>
+						<BasicData />
+						<PaymentData />
+						<Button type="submit">Place order</Button>
+					</Wrapper>
 				</form>
 			</FormProvider>
-		</>
+		</Container>
 	)
 }

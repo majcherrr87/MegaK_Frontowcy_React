@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material'
 import { forwardRef } from 'react'
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
 
@@ -13,11 +14,15 @@ export const Input = forwardRef<
 >(({ type, label, error, ...register }, ref) => {
 	return (
 		<div>
-			<label>
-				{label}
-				<input type={type} {...register} ref={ref} />
-				{error && <span style={{ color: 'red' }}>{error.message}</span>}
-			</label>
+			<TextField
+				label={label}
+				variant="standard"
+				error={!!error}
+				helperText={error?.message}
+				type={type}
+				{...register}
+				ref={ref}
+			/>
 		</div>
 	)
 })

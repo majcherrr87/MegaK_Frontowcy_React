@@ -1,6 +1,8 @@
 import { useFormContext } from 'react-hook-form'
-import { Input } from './Input'
+import { Input } from '../ui/Input'
 import { OrderData } from '../schemas/order'
+import { SectionHeader } from '../ui/SectionHeader'
+import { Section } from '../ui/Section'
 
 export const BasicData = () => {
 	const {
@@ -8,8 +10,8 @@ export const BasicData = () => {
 		formState: { errors },
 	} = useFormContext<OrderData>()
 	return (
-		<div>
-			<h2>Basic data</h2>
+		<Section>
+			<SectionHeader>Basic data</SectionHeader>
 			<Input
 				type="text"
 				label="Name"
@@ -28,6 +30,6 @@ export const BasicData = () => {
 				{...register('basic.age')}
 				error={errors.basic?.age}
 			/>
-		</div>
+		</Section>
 	)
 }
