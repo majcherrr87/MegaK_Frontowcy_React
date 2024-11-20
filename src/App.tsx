@@ -7,6 +7,8 @@ import { Button } from './ui/Button'
 import { PageHeader } from './ui/PageHeader'
 import { Container } from './ui/Container'
 import { Wrapper } from './ui/Wrapper'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme'
 
 export const App = () => {
 	const methods = useForm<OrderData>({
@@ -25,17 +27,19 @@ export const App = () => {
 	}
 
 	return (
-		<Container>
-			<PageHeader>Place your order</PageHeader>
-			<FormProvider {...methods}>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<Wrapper>
-						<BasicData />
-						<PaymentData />
-						<Button type="submit">Place order</Button>
-					</Wrapper>
-				</form>
-			</FormProvider>
-		</Container>
+		<ThemeProvider theme={theme}>
+			<Container>
+				<PageHeader>Place your order</PageHeader>
+				<FormProvider {...methods}>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<Wrapper>
+							<BasicData />
+							<PaymentData />
+							<Button type="submit">Place order</Button>
+						</Wrapper>
+					</form>
+				</FormProvider>
+			</Container>
+		</ThemeProvider>
 	)
 }

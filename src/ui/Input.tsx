@@ -16,6 +16,7 @@ export const Input = forwardRef<
 		<div>
 			<TextField
 				label={label}
+				fullWidth
 				variant="standard"
 				error={!!error}
 				helperText={error?.message}
