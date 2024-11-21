@@ -1,45 +1,21 @@
-import { FormProvider, useForm } from 'react-hook-form'
-import { OrderData, orderSchema } from './schemas/order'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { BasicData } from './component/BasicData'
-import { PaymentData } from './component/PaymentData'
-import { Button } from './ui/Button'
-import { PageHeader } from './ui/PageHeader'
-import { Container } from './ui/Container'
-import { Wrapper } from './ui/Wrapper'
-import { ThemeProvider } from '@mui/material'
-import { theme } from './theme'
+import { BasicTooltip } from './component/BasicTooltip'
+
+import { LabelWithTooltip } from './component/LabelWithTooltip'
+import { Section } from './component/Section'
 
 export const App = () => {
-	const methods = useForm<OrderData>({
-		resolver: yupResolver(orderSchema),
-	})
-
-	const {
-		handleSubmit,
-		formState: { errors },
-	} = methods
-
-	console.log(errors)
-
-	const onSubmit = (data: OrderData) => {
-		console.log('data', data)
-	}
-
 	return (
-		<ThemeProvider theme={theme}>
-			<Container>
-				<PageHeader>Place your order</PageHeader>
-				<FormProvider {...methods}>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<Wrapper>
-							<BasicData />
-							<PaymentData />
-							<Button type="submit">Place order</Button>
-						</Wrapper>
-					</form>
-				</FormProvider>
-			</Container>
-		</ThemeProvider>
+		// <>
+		// 	<Foo>
+		// 		<h1>Not in Portal</h1>
+		// 	</Foo>
+		// 	<FooPortal>
+		// 		<h1>In Portal</h1>
+		// 	</FooPortal>
+		// </>
+		<Section>
+			<LabelWithTooltip text="lorem ipsum" tooltip="Dolor sit amet" />
+			<BasicTooltip />
+		</Section>
 	)
 }
