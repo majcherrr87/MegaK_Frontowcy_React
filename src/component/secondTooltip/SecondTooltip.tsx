@@ -1,13 +1,13 @@
-import { ReactElement, useState } from 'react'
-import styles from './styles.module.scss'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import styles from './styles.module.scss'
 
-export type TooltipProps = {
+export type SecondTooltipProps = {
 	children: ReactElement
 	text: string
 }
 
-export const Tooltip = ({ children, text }: TooltipProps) => {
+export const SecondTooltip = ({ children, text }: SecondTooltipProps) => {
 	const [tooltipState, setTooltipState] = useState<{
 		visible: boolean
 		x: number
@@ -18,7 +18,24 @@ export const Tooltip = ({ children, text }: TooltipProps) => {
 		y: 0,
 	})
 
-	const handleEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+	const elementRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (!elementRef || !elementRef.current) return
+
+		const firstChild = elementRef.current.firstChild
+
+		if (!firstChild) return
+		firstChild.addEventListener('mouseenter', handleEnter)
+		firstChild.addEventListener('mouseleave', handleLeave)
+
+		return () => {
+			firstChild.removeEventListener('mouseenter', handleEnter)
+			firstChild.removeEventListener('mouseleave', handleLeave)
+		}
+	}, [elementRef])
+
+	const handleEnter = (e: Event) => {
 		const target = e.target as HTMLDivElement
 		const { y, x, height } = target.getBoundingClientRect()
 		const tooltipY = window.scrollY + y + height
@@ -29,10 +46,8 @@ export const Tooltip = ({ children, text }: TooltipProps) => {
 		setTooltipState({ visible: false, y: 0, x: 0 })
 	}
 	return (
-		<div>
-			<div onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-				{children}
-			</div>
+		<div ref={elementRef}>
+			{children}
 			{tooltipState.visible
 				? createPortal(
 						<div
