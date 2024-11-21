@@ -1,21 +1,14 @@
-import { BasicTooltip } from './component/BasicTooltip'
-
-import { LabelWithTooltip } from './component/LabelWithTooltip'
-import { Section } from './component/Section'
+import { Section } from './component/section/Section'
+import { Tooltip } from './component/Tooltip/Tooltip'
 
 export const App = () => {
 	return (
-		// <>
-		// 	<Foo>
-		// 		<h1>Not in Portal</h1>
-		// 	</Foo>
-		// 	<FooPortal>
-		// 		<h1>In Portal</h1>
-		// 	</FooPortal>
-		// </>
-		<Section>
-			<LabelWithTooltip text="lorem ipsum" tooltip="Dolor sit amet" />
-			<BasicTooltip />
-		</Section>
+		<>
+			<Section>
+				<Tooltip text="Lorem Ipsum">
+					<div>lorem Ipsum</div>
+				</Tooltip>
+			</Section>
+		</>
 	)
 }
