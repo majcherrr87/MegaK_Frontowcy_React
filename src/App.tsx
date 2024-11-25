@@ -1,21 +1,35 @@
-import { useState } from 'react'
-import { Modal } from './component/Modal/Modal'
-import { Page } from './component/Page/Page'
+import { Actions } from './component/InfoCard/components/Actions'
+import { Description } from './component/InfoCard/components/Description'
+import { Title } from './component/InfoCard/components/Title'
+import { InfoCard } from './component/InfoCard/InfoCard'
+import { InfoData } from './types'
+
+const data: InfoData = {
+	title: 'Lorem ipsum',
+	description: 'Dolor sit ammet',
+	label: 'Click me',
+}
 
 export const App = () => {
-	const [isModal, setIsModal] = useState<boolean>(false)
-
-	const handleShowModal = () => {
-		setIsModal(true)
-	}
-	const handleCloseModal = () => {
-		setIsModal(false)
-	}
-
 	return (
-		<Page>
-			<button onClick={handleShowModal}>Show Modal</button>
-			{isModal && <Modal text="kot" tittle="lisa" onClose={handleCloseModal} />}
-		</Page>
+		<>
+			<InfoCard item={data}>
+				<Title />
+				<Description />
+				<Actions />
+			</InfoCard>
+			<InfoCard item={data}>
+				<Title />
+				<Description />
+			</InfoCard>
+			<InfoCard item={data}>
+				<Description />
+			</InfoCard>
+			<InfoCard item={data}>
+				<Title />
+				<Actions />
+			</InfoCard>
+		</>
 	)
 }
+//19:30
