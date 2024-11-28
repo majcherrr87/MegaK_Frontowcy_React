@@ -1,6 +1,6 @@
 import { useDeferredValue } from 'react'
-import { Bar } from './Bar'
 import { useInput } from './hooks/useInput'
+import { Slow } from './Slow'
 
 export const App = () => {
 	const value = useInput('')
@@ -10,8 +10,7 @@ export const App = () => {
 
 	return (
 		<div>
-			<input type="text" {...value} />
-			<Bar value={deferredValue} />
+			<Slow />
 		</div>
 	)
 }
