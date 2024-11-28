@@ -1,9 +1,11 @@
-import { Counter } from './Counter'
+import { SecondStore } from './SecondStore'
+import { Store } from './Store'
 
 export const App = () => {
 	return (
 		<>
-			<Counter />
+			<SecondStore />
+			<Store />
 		</>
 	)
 }
