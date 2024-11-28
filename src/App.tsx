@@ -1,9 +1,9 @@
-import { Baz } from './Baz'
+import { Counter } from './Counter'
 
 export const App = () => {
 	return (
 		<>
-			<Baz />
+			<Counter />
 		</>
 	)
 }
