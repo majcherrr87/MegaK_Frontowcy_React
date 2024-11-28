@@ -1,13 +1,17 @@
-import { LightBulb } from './components/LightBulb'
+import { useDeferredValue } from 'react'
+import { Bar } from './Bar'
+import { useInput } from './hooks/useInput'
 
 export const App = () => {
+	const value = useInput('')
+	const deferredValue = useDeferredValue(value.value)
+
+	console.log(value.value, deferredValue)
+
 	return (
-		<>
-			<LightBulb>
-				<LightBulb.ContentOn>Light is On</LightBulb.ContentOn>
-				<LightBulb.Switch />
-				<LightBulb.ContentOff>Light is Off</LightBulb.ContentOff>
-			</LightBulb>
-		</>
+		<div>
+			<input type="text" {...value} />
+			<Bar value={deferredValue} />
+		</div>
 	)
 }
