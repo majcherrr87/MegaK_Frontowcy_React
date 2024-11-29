@@ -1,13 +1,6 @@
 import { DataList } from './components/DataList/DataList'
-
-type SingleElement = {
-	id: number
-	a: number
-	b: number
-	c: number
-	value: string
-	label?: string
-}
+import { SinglDataElement } from './components/DataList/SinglDataElement'
+import { SingleElement } from './types'
 
 export const App = () => {
 	const handleClick = (element: SingleElement) => {
@@ -23,6 +16,16 @@ export const App = () => {
 				]}
 				visibleKeys={['value', 'label']}
 				callback={handleClick}
+				RowComponent={SinglDataElement}
+				RenderRow={(item, index) =>
+					index % 2 === 0 ? (
+						<SinglDataElement item={item} />
+					) : (
+						<p>
+							{item.value} - {item.id}
+						</p>
+					)
+				}
 			/>
 		</>
 	)
