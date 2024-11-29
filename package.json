@@ -16,6 +16,7 @@
 		"@swc/plugin-styled-components": "^5.0.0",
 		"clsx": "^2.1.1",
 		"json-server": "^1.0.0-beta.1",
+		"nanoid": "^5.0.9",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.53.2",
@@ -34,8 +35,8 @@
 		"husky": "^8.0.0",
 		"lint-staged": "^15.2.2",
 		"prettier": "^3.2.5",
-		"sass-embedded": "^1.81.0",
 		"sass": "^1.71.1",
+		"sass-embedded": "^1.81.0",
 		"typescript": "^5.2.2",
 		"vite": "^5.1.4"
 	}
